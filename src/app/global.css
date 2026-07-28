@@ -3,40 +3,94 @@
 @import "fumadocs-ui/css/preset.css";
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-sans: "Inter Tight Variable", "Inter Tight", "Helvetica Neue", Arial,
+    sans-serif;
+  --font-display: "Inter Tight Variable", "Inter Tight", "Helvetica Neue", Arial,
+    sans-serif;
+  --font-mono: "Sometype Mono Variable", "Sometype Mono", ui-monospace,
+    SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
-  --lemma-accent: #3d50ff;
-  --lemma-ink: #0a0a0a;
-  --lemma-muted: #525252;
-  --lemma-border: #e6e3dd;
-  --lemma-soft: #f7f7f4;
+  --paper: #fcfcfc;
+  --ink: #121212;
+  --accent: #002fa7;
+  --accent-hover: #1b46c7;
+  --accent-strong: #00247f;
+  --accent-soft: #eef2ff;
+  --signal: #ff7a45;
+  --body: #3d3d3d;
+  --muted: #707070;
+  --subtle: #707070;
+  --border: #e9e9e7;
+  --surface: #f6f6f4;
+  --paper-deep: #f2f2ef;
+  --success: #137a4c;
+  --warning: #a96000;
+  --failure: #b42318;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
 body {
-  background: #ffffff;
-  color: var(--lemma-ink);
+  min-width: 320px;
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-::selection {
-  background: #dfe4ff;
-  color: var(--lemma-ink);
+body {
+  overflow-x: clip;
 }
 
-.lemma-prose-lede {
-  color: var(--lemma-muted);
-  font-size: 1.05rem;
-  line-height: 1.75;
+::selection {
+  background: #dfe6ff;
+  color: var(--ink);
+}
+
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+details[open] > summary {
+  color: var(--accent);
+}
+
+html:has(.lemma-search-dialog[open]) {
+  overflow: hidden;
+}
+
+.lemma-search-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(92vw, 720px);
+  max-width: none;
+  max-height: min(82dvh, 720px);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: white;
+  color: var(--ink);
+  box-shadow: 0 36px 110px -34px rgba(18, 18, 18, 0.52);
+  overscroll-behavior: contain;
+}
+
+.lemma-search-dialog::backdrop {
+  background: rgba(18, 18, 18, 0.46);
+  backdrop-filter: blur(3px);
 }
 
 .lemma-article {
-  color: var(--lemma-ink);
+  color: var(--ink);
   font-size: 1rem;
   line-height: 1.75;
 }
@@ -45,45 +99,97 @@ body {
   margin-top: 0;
 }
 
+.lemma-article h2,
+.lemma-article h3,
+.lemma-article h4 {
+  scroll-margin-top: 6.5rem;
+  color: var(--ink);
+}
+
 .lemma-article h2 {
-  margin-top: 2.5rem;
-  margin-bottom: 0.8rem;
-  border-top: 1px solid var(--lemma-border);
-  padding-top: 2rem;
-  color: var(--lemma-ink);
+  margin-top: 2.75rem;
+  margin-bottom: 0.85rem;
+  border-top: 1px solid var(--border);
+  padding-top: 2.25rem;
   font-size: 1.55rem;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.25;
+  letter-spacing: -0.012em;
 }
 
 .lemma-article h3 {
-  margin-top: 1.75rem;
-  margin-bottom: 0.45rem;
-  color: var(--lemma-ink);
-  font-size: 1.05rem;
-  font-weight: 650;
+  margin-top: 1.9rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  font-weight: 600;
   line-height: 1.35;
 }
 
 .lemma-article h4 {
-  margin-top: 1.4rem;
-  margin-bottom: 0.35rem;
-  color: var(--lemma-ink);
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
   font-size: 0.98rem;
-  font-weight: 650;
+  font-weight: 600;
+}
+
+.lemma-linked-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.lemma-linked-heading > a {
+  min-width: 0;
+}
+
+.lemma-heading-copy {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.35rem;
+  color: var(--muted);
+  opacity: 0;
+  transition:
+    color 150ms ease,
+    opacity 150ms ease,
+    background-color 150ms ease;
+}
+
+.lemma-linked-heading:hover .lemma-heading-copy,
+.lemma-heading-copy:focus-visible {
+  opacity: 1;
+}
+
+.lemma-heading-copy:hover {
+  background: var(--surface);
+  color: var(--accent);
+}
+
+.lemma-heading-copy:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .lemma-article p,
 .lemma-article ul,
 .lemma-article ol,
-.lemma-article blockquote {
+.lemma-article blockquote,
+.lemma-article .lemma-table-wrap {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 .lemma-article p,
 .lemma-article li {
-  color: var(--lemma-muted);
+  color: var(--body);
+}
+
+.lemma-article strong {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .lemma-article ul,
@@ -100,40 +206,135 @@ body {
 }
 
 .lemma-article li + li {
-  margin-top: 0.35rem;
+  margin-top: 0.4rem;
 }
 
 .lemma-article a {
-  color: #2436d9;
+  color: var(--accent-strong);
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: #b7c7f7;
+  text-underline-offset: 0.2em;
 }
 
 .lemma-article a:hover {
-  color: var(--lemma-ink);
+  color: var(--ink);
+  text-decoration-color: var(--ink);
 }
 
 .lemma-article blockquote {
-  border-left: 3px solid #3d50ff;
-  background: #f7f8ff;
+  border-left: 2px solid var(--accent);
+  background: var(--accent-soft);
   padding: 0.9rem 1rem;
-  color: #283044;
+  color: var(--body);
 }
 
 .lemma-article blockquote p {
-  color: #283044;
+  color: var(--body);
 }
 
 .lemma-article code {
-  border: 1px solid var(--lemma-border);
+  border: 1px solid var(--border);
   border-radius: 0.35rem;
-  background: #fbfbf8;
+  background: var(--surface);
   padding: 0.1rem 0.3rem;
-  color: var(--lemma-ink);
+  color: var(--ink);
   font-size: 0.9em;
+}
+
+.lemma-article .lemma-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: white;
+  scrollbar-gutter: stable;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lemma-article .lemma-table-wrap:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.lemma-article table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  border: 0;
+  font-size: 0.9rem;
+}
+
+.lemma-article th,
+.lemma-article td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.lemma-article th {
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lemma-article td {
+  color: var(--body);
+}
+
+.lemma-article tr:last-child td {
+  border-bottom: 0;
+}
+
+.lemma-article img {
+  max-width: 100%;
 }
 
 .lemma-article [data-card] {
   color: inherit;
   font-weight: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .lemma-search-dialog {
+    width: calc(100vw - 1rem);
+    max-height: calc(100dvh - 1rem);
+    border-radius: 0.6rem;
+  }
+
+  .lemma-article {
+    font-size: 0.97rem;
+  }
+
+  .lemma-article .lemma-responsive-table {
+    min-width: 42rem;
+  }
+}
+
+@media (hover: none) {
+  .lemma-heading-copy {
+    opacity: 0.72;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

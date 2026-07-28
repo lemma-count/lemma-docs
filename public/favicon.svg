@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <style>
+    .field { fill: #121212; }
+    .passage { fill: #FCFCFC; }
+    .signal { fill: #FF7A45; }
+    @media (prefers-color-scheme: dark) {
+      .field { fill: #FCFCFC; }
+      .passage { fill: #121212; }
+    }
+  </style>
+  <rect class="field" width="160" height="160"/>
+  <path class="passage" d="M40 32H120V128H95V58H65V128H40Z"/>
+  <path class="signal" d="M68 128A12 12 0 0 1 92 128Z"/>
+</svg>

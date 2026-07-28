@@ -1,38 +1,57 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { ReactNode } from "react";
 import { GrowthAnalyticsProvider } from "@/components/growth-analytics-provider";
+import { siteName, siteUrl } from "@/lib/site";
+import "@fontsource-variable/inter-tight";
+import "@fontsource-variable/sometype-mono";
 import "./global.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: {
-    default: "Lemma Help Center",
-    template: "%s | Lemma Help Center",
+    default: siteName,
+    template: `%s | ${siteName}`,
   },
   description:
-    "Self-serve help for designing adaptive Lemma studies, inviting participants, reviewing responses, and turning evidence into decisions.",
+    "Practical guidance for connecting a Sender, adding Leads, creating Missions, reviewing Sequences, and running controlled LinkedIn outreach with Lemma.",
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://docs.heylemma.com"),
+  manifest: "/site.webmanifest",
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    type: "website",
+    siteName,
+    title: siteName,
+    description:
+      "Run outbound with clarity—from a connected Sender and the right Leads to reviewable work and visible next actions.",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Lemma Help Center — One clear next step for every outbound job.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteName,
+    description:
+      "Run outbound with clarity—from a connected Sender and the right Leads to reviewable work and visible next actions.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col antialiased">

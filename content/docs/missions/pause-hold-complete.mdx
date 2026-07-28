@@ -1,0 +1,77 @@
+---
+title: Pause, hold, stop, or complete work
+description: Choose the smallest control that stops the intended scope without hiding in-flight work.
+---
+
+Different controls stop different work. First decide whether the scope is one Sequence, one Manual Mission, one Lemma-led Mission’s LinkedIn activity, all Manual sending, or the entire Sender.
+
+## Pause a Lemma-led Mission after this turn
+
+In a Lemma-led Cockpit, choose **Pause after this turn** when you want Lemma to stop starting new Mission turns. The current turn may finish.
+
+This is not the fastest way to stop provider-side LinkedIn activity. Use **Hold LinkedIn** for the Mission or **Pause** for the Sender when sending must stop.
+
+## Hold LinkedIn for one Lemma-led Mission
+
+Open **More mission actions → Hold LinkedIn**. Provider-side LinkedIn work for that Mission is held, while Lemma can continue research and drafting.
+
+Choose **Resume LinkedIn** after the operating reason is resolved.
+
+## Pause one Manual Mission
+
+Choose **Pause** in the Manual Cockpit, or open one Manual Sequence in Outbox and choose **Pause Manual Mission**. All Manual sending for that Mission is held. Choose **Resume** in Cockpit or **Resume Mission** in the Sequence drawer to remove the hold.
+
+## Hold all Manual sending
+
+At the top of Outbox, choose **Hold all manual sending** to stop Manual sending across the workspace. Lemma-led work is unaffected by this workspace hold.
+
+The Outbox banner shows the active hold. Choose **Resume manual sending** from that banner to remove it.
+
+## Stop one Manual Sequence
+
+Open the Sequence and choose **Stop Sequence**. This stops future cold touches for that exact Manual Mission and Lead. It does not stop other Leads, Missions, or Lemma-led work.
+
+## Pause the Sender
+
+Open [Settings → Sender](https://app.heylemma.com/settings/channels) and choose **Pause** when every eligible action through that LinkedIn account should stop becoming eligible. An already in-flight provider action may still need to settle.
+
+## Complete a Lemma-led Mission
+
+Choose **More mission actions → Complete Mission** in a Lemma-led Cockpit when the Mission itself should end.
+
+Completion:
+
+- cancels unclaimed pending, ready, blocked, and approved tasks;
+- does not pretend an already-sending provider action was canceled;
+- enters **Finishing** while sending work settles;
+- becomes **Completed** when no sending task remains;
+- preserves the plan, evidence, outreach history, and Lead memberships as read-only history.
+
+The terminal Cockpit can still show a completion report. Provider-backed metrics may display an em dash when the required evidence is unavailable, and action-needed items can remain after the Mission ends.
+
+## Archive terminal Missions
+
+Completed and failed Missions can be archived from the expanded Mission navigation. Archiving:
+
+- removes the Mission from **Current**;
+- preserves its Cockpit, Leads, Outbox history, and results;
+- keeps it searchable under **Archived**.
+
+Archive from the individual Mission row only after it is terminal. Archiving is organization, not deletion, and does not rewrite provider history.
+
+<HelpCallout type="warning" title="No control rewrites provider history">
+After applying a stop, inspect Outbox and the Audit log. A provider action already accepted by LinkedIn remains part of the history.
+</HelpCallout>
+
+## Emergency order
+
+When unintended sending may be imminent:
+
+1. use **Hold LinkedIn** for one Mission or **Pause** for the Sender;
+2. use **Hold all manual sending** when the scope is every Manual Mission;
+3. inspect the affected Sequences and provider evidence;
+4. open **Support** from the Lemma sidebar with the Mission, Lead, Sender, and timestamp.
+
+## Next action
+
+Read [Resolve a Sequence problem](/outbox/resolve-problems) or [Use the Audit log](/reference/audit-log).

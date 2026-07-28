@@ -1,0 +1,58 @@
+---
+title: Sender, Lead, and approval boundaries
+description: Understand the conditions that remain in force after preparation or approval.
+---
+
+Approval describes permission for a specific scope. It does not override the Sender, Lead, timing, hold, or provider conditions.
+
+## Sender boundaries
+
+- A healthy verified Connect or Replace normally becomes **Ready** automatically.
+- Reconnect preserves the existing execution status.
+- An exceptional **Dry run** Sender needs **Activate sending** when that control appears.
+- A **Paused**, **Restricted**, or **Unavailable** Sender is not executable.
+- Automatic effective-capacity warm-up starts with the first provider-authorized outreach activity: paid, Sales Navigator, and Recruiter Senders ramp from 10 to 25 invitations and 20 to 80 messages per day over 14 days; new, free, and unknown Senders ramp from 5 to 20 invitations and 10 to 40 messages per day over 21 days.
+- The configured daily target is the desired ceiling. The effective limit is the current ramp- and provider-safe ceiling; the active schedule, confirmed activity, and reservations can reduce available capacity again.
+- A provider retry boundary or account restriction can stop otherwise eligible work.
+- Reconnecting does not silently resume an intentional pause.
+- Replacing is blocked while non-terminal work references the current Sender, and existing tasks are never reassigned.
+
+## Lead boundaries
+
+- Do not contact prevents future executable outreach.
+- A valid LinkedIn identity is required for LinkedIn work.
+- Active outreach conflicts can block a Manual launch.
+- A List or Mission assignment does not prove eligibility.
+- Imported and inferred fields must not become claims beyond their available evidence.
+- An invitation note is available only for paid, Sales Navigator, or Recruiter Senders and is limited to 200 characters. Free or unknown Senders must omit it.
+
+## Approval boundaries
+
+### Lemma-led
+
+**Review approval** and **Auto approval** live in Cockpit. Auto approval applies only to future LinkedIn Sequences; existing decisions do not change.
+
+Eligible Lemma-authored Sequences also have a pre-send review boundary in **Outbox → Open**. Editing, adding, or deleting changes the active revision. Rescheduling one eligible touch re-anchors the eligible pre-send chain, while priority applies Sequence-wide to eligible pre-send tasks. **Validate sequence** or **Batch validate** approves and freezes the current message bodies. Sent, provider-confirmed, or otherwise locked touches cannot be rewritten through this editor.
+
+### Manual
+
+The wizard’s **Review** step checks the exact List revision, Sender, playbook, rendered copy, eligibility, and blocked reasons. **Launch Mission** commits that reviewed scope.
+
+Neither path overrides Sender readiness, schedule, daily targets, Do not contact, eligibility, holds, or provider evidence.
+
+## Stop boundaries
+
+- **Stop Sequence** affects one future Manual cold Sequence.
+- **Pause Manual Mission** affects Manual sending for one Mission.
+- **Hold all manual sending** affects Manual work across the workspace, not Lemma-led work.
+- **Hold LinkedIn** affects provider-side LinkedIn work for one Lemma-led Mission while Lemma can keep preparing.
+- Sender **Pause** affects eligible work through that LinkedIn account.
+- **Complete Mission** applies to one Lemma-led Mission: it cancels eligible unclaimed work but lets already-sending work settle.
+
+## Outcome boundaries
+
+Lemma does not guarantee replies, meetings, qualified Leads, revenue, deliverability, compliance, or platform safety.
+
+<HelpCallout type="warning" title="Current channel">
+This Help Center documents LinkedIn execution. Do not apply these controls or evidence rules to email or CRM actions.
+</HelpCallout>

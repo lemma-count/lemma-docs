@@ -1,123 +1,101 @@
-# Lemma Docs
+# Lemma Help Center
 
-Self-serve product documentation for `docs.heylemma.com`.
+Business-facing product documentation for Lemma’s professional outbound workflow.
 
-This site is built with Next.js and Fumadocs. It is intentionally product-led rather than developer-led: the first job is to help a user replace a shallow static form with an adaptive Lemma voice form, share it, and use the resulting report.
-
-## Commands
-
-```bash
-npm install
-npm run dev
-npm run build
-```
-
-## Initial Content Scope
-
-The first release includes the 10 highest-priority pages:
-
-1. `/`
-2. `/start/quickstart`
-3. `/start/what-is-lemma`
-4. `/start/replace-a-static-form`
-5. `/create/from-a-goal`
-6. `/create/write-starter-questions`
-7. `/create/guide-follow-ups`
-8. `/create/test-your-form`
-9. `/share/respondent-experience`
-10. `/analyze/reports`
-
-## Full V1 Sitemap
+The site is built with Next.js and Fumadocs. Its information architecture follows the work an Operator needs to complete:
 
 ```txt
 /
 
-Start
-/start/what-is-lemma
+Start here
+/start
+/start/onboarding
 /start/quickstart
-/start/replace-a-static-form
-/start/voice-forms-vs-static-forms
-/start/product-status
+/start/home
+/start/what-is-lemma
+/start/core-concepts
 
-Create a voice form
-/create
-/create/from-a-goal
-/create/write-starter-questions
-/create/guide-follow-ups
-/create/test-your-form
+Sender
+/sender
+/sender/connect-and-activate
+/sender/readiness-and-schedule
+/sender/pause-reconnect-replace
 
-Share with respondents
-/share
-/share/send-a-form-link
-/share/respondent-experience
-/share/get-better-answers
-/share/microphone-and-browser-help
+Leads
+/leads
+/leads/import-from-linkedin
+/leads/import-spreadsheet
+/leads/create-manage-lists
+/leads/organize-and-protect
 
-Analyze responses
-/analyze
-/analyze/transcripts
-/analyze/summaries
-/analyze/themes
-/analyze/quotes
-/analyze/reports
-/analyze/turn-findings-into-actions
+Missions
+/missions
+/missions/create-lemma-led
+/missions/build-manually
+/missions/research-and-drafts
+/missions/cockpit-and-controls
+/missions/pause-hold-complete
 
-Templates
-/templates
-/templates/customer-feedback-form
-/templates/lead-qualification-form
-/templates/churn-feedback-form
-/templates/nps-follow-up-form
-/templates/customer-story-intake-form
-/templates/client-intake-form
-/templates/message-testing-form
-/templates/product-research-form
-
-Examples
-/examples
-/examples/customer-feedback-report
-/examples/lead-qualification-report
-/examples/churn-feedback-report
-
-Account
-/account
-/account/credits-and-usage
-/account/team-members
-/account/billing
-/account/support
-
-Trust
-/trust
-/trust/data-handling
-/trust/respondent-consent
-/trust/privacy-faq
+Outbox
+/outbox
+/outbox/review-sequences
+/outbox/understand-statuses
+/outbox/resolve-problems
+/outbox/handle-replies
 
 Reference
-/reference/glossary
-/reference/changelog
-/reference/product-limits
+/reference
+/reference/execution-truth
+/reference/safety-boundaries
+/reference/timezones
+/reference/audit-log
+/reference/about-me
+/reference/about-offer
+/reference/roles-and-access
+/reference/account-data-billing
+/reference/troubleshooting
+/reference/support
 ```
 
-## Screenshot Pass
+## Run locally
 
-Screenshot placeholders are marked in MDX with `ScreenshotSlot`. The first Atlas capture pass should prioritize:
+```bash
+npm install
+npm run dev
+npm run typecheck
+npm run build
+```
 
-1. New voice form / study creation.
-2. Goal input.
-3. Starter questions.
-4. Follow-up guidance.
-5. Preview or test response.
-6. Respondent landing page.
-7. In-progress voice response.
-8. Report view.
+Set `NEXT_PUBLIC_SITE_URL` to the deployed origin used for metadata, robots, and the sitemap. The production origin is `https://docs.heylemma.com`.
 
-## Product Audit System
+## Brand system
 
-The product-doc coverage system lives in `docs-inventory/`:
+The interface follows the approved Lemma brand kit v2.0.0, **Sunrise Threshold**: a flat orthogonal doorway framing a Signal-orange half-sun on the horizon, with Paper and Ink fields, Inter Tight, Sometype Mono, and sharp control geometry. Superseded perspective marks, coastal imagery, and the serif layer are intentionally excluded.
 
-- `product-map.md`: product feature inventory.
-- `screenshot-manifest.md`: exact screenshot capture plan.
-- `coverage-matrix.md`: feature-to-doc coverage tracker.
-- `atlas-agent-prompt.md`: prompt for an Atlas/browser audit pass.
+## Product truth
 
-Update those files before writing broad new documentation pages. The docs should reflect observed product behavior, not assumed feature behavior.
+The published guides describe the verified LinkedIn workflow:
+
+- connect one Sender and verify that a healthy Connect or Replace becomes Ready;
+- recover an exceptional Dry run Sender with Activate sending when that control appears;
+- distinguish configured targets from the Sender’s automatic warm-up and effective capacity;
+- add real Leads from LinkedIn or a spreadsheet;
+- create a bounded Mission and Sequence;
+- use the conversational Lemma-led Cockpit or operational Manual Cockpit;
+- review prepared work and provider evidence in Outbox;
+- distinguish Draft, approved, scheduled, running, blocked, failed, and provider-confirmed states;
+- store Operator and offer dossiers without promising downstream reuse that is not wired;
+- handle replies and problems without implying an outcome guarantee.
+
+Do not document the retired studies product, automatic Lead sourcing, detailed email execution, CRM writes, teammate administration, hidden integration fixtures, unsupported channels, or guaranteed results as current capabilities.
+
+## Documentation evidence
+
+The audit system in `docs-inventory/` records:
+
+- the verified product map;
+- page coverage and remaining gaps;
+- screenshot provenance and recapture needs;
+- the design-reference decisions behind the Help Center UX.
+
+Update this evidence before adding broad product claims or new capability areas.

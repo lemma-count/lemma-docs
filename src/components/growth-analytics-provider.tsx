@@ -12,10 +12,17 @@ export function GrowthAnalyticsProvider() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (initGrowthAnalytics()) {
+    let active = true;
+
+    void initGrowthAnalytics().then((initialized) => {
+      if (!active || !initialized) return;
       refreshGrowthAnalyticsProperties();
       trackGrowthPageview();
-    }
+    });
+
+    return () => {
+      active = false;
+    };
   }, [pathname]);
 
   return null;

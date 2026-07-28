@@ -1,0 +1,98 @@
+---
+title: Connect a LinkedIn Sender
+description: Connect the correct LinkedIn identity and verify its current execution state.
+---
+
+Connect the one LinkedIn profile you want Lemma to use for outbound in the active workspace.
+
+<Outcome title="Outcome">
+The intended account appears under **Settings → Sender**. A healthy verified connection normally shows **Connected** and **Ready**.
+</Outcome>
+
+## Before you start
+
+Use an account you control and are allowed to use. If you work across several LinkedIn profiles or Lemma workspaces, confirm both before continuing.
+
+## Connect the account
+
+<Steps>
+<Step>
+
+### Open LinkedIn settings
+
+Open [**Settings → Sender**](https://app.heylemma.com/settings/channels). If no Sender exists, the page shows **Connect your LinkedIn Sender**.
+
+</Step>
+<Step>
+
+### Choose Connect
+
+Choose **Connect** and finish the provider-hosted authentication flow. Return to Lemma after the provider window completes.
+
+</Step>
+<Step>
+
+### Wait for verification
+
+The connection is not authoritative until provider verification settles. A healthy connection normally becomes **Ready** automatically.
+
+If Lemma cannot verify the latest state, it preserves the last verified view as read-only and offers **Retry**.
+
+</Step>
+<Step>
+
+### Verify the identity
+
+Check the displayed Sender name, LinkedIn identity, connection badge, and provider status. If the identity is wrong, do not queue more work. Follow [Replace the account](/sender/pause-reconnect-replace#replace-the-account).
+
+</Step>
+<Step>
+
+### Review the active schedule
+
+Check **Invitations/day**, **Messages/day**, active days, start and end times, and timezone. The daily targets are desired ceilings; the current effective limits can be lower while capacity warms up or another safety limit binds. Choose **Save settings** after a change.
+
+</Step>
+</Steps>
+
+## If the Sender remains in Dry run
+
+**Dry run** is an exceptional or older state. If **Activate sending** is available:
+
+1. verify the account identity and schedule;
+2. choose **Activate sending**;
+3. confirm the execution badge changes to **Ready**.
+
+Do not look for a generic **Activate** button on every new connection.
+
+## Ready and full capacity are different
+
+A Ready Sender can execute eligible work, but its effective invitation and message limits warm up automatically. The ramp begins with the first provider-authorized outreach activity, not when the account connects or becomes Ready.
+
+Read [Sender readiness, schedule, and capacity](/sender/readiness-and-schedule) before increasing the first Mission’s audience.
+
+## Other outcomes
+
+### Restricted
+
+Read the execution reason shown directly under the state. Resolve that account or provider condition; there is no separate “state detail” screen to open.
+
+### Unavailable execution
+
+Read the reason under the execution badge. Depending on the verified state, **Reconnect**, **Replace**, or schedule controls can remain available. **Retry** is not the general recovery action for this badge.
+
+### Sender readiness is unavailable
+
+Choose **Retry** when the page uses this exact heading. Lemma cannot verify an authoritative page state, so execution controls are absent. A stale projection similarly keeps the last verified state read-only until **Retry** succeeds.
+
+### Reconnect is rejected
+
+A disconnected Sender can show **Reconnect** even when its stored provider identity proof is incomplete. If Reconnect is rejected or Settings cannot verify that it is the same LinkedIn identity, do not retry repeatedly. Use **Support**.
+
+### The connection flow failed
+
+The previous Sender and execution state are not replaced. Start **Connect**, **Reconnect**, or **Replace** again only after confirming which operation you intended. Do not use **Connect** to repair an existing disconnected Sender.
+
+## Next action
+
+Read [Sender readiness, schedule, and capacity](/sender/readiness-and-schedule).

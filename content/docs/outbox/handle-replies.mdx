@@ -1,0 +1,67 @@
+---
+title: Handle replies in Outbox
+description: Read an inbound LinkedIn reply and use the limited current response action without inventing pipeline controls.
+---
+
+Inbound LinkedIn replies appear inside the related Outbox Sequence. Lemma does not currently provide a separate primary Inbox for this workflow.
+
+## Read the reply
+
+<Steps>
+<Step>
+
+### Find the Sequence
+
+Use **Needs you** when the reply creates an available action, or open the Lead’s Sequence from another Outbox view.
+
+</Step>
+<Step>
+
+### Confirm the context
+
+Check the Lead, Mission, Sender, prior planned touches, inbound body, received time, and displayed handling status.
+
+</Step>
+<Step>
+
+### Review the suggestion
+
+If present, **Suggested response** is read-only. The current Outbox does not provide a generic editor for it.
+
+</Step>
+<Step>
+
+### Queue only when appropriate
+
+For a Manual Sequence, **Queue reply** can appear when Lemma has a suggested response it is allowed to queue. This queues that suggestion verbatim with the originating Sender.
+
+If the action is absent or the suggestion is wrong, do not assume it was queued. Handle the conversation outside this control only after checking that no Lemma reply is pending.
+
+</Step>
+</Steps>
+
+## What happens to the cold Sequence
+
+An inbound reply automatically stops the matching future Manual cold Sequence. Verify the Sequence outcome and history before creating any new follow-up work.
+
+An explicit do-not-contact reply can also add the Lead to the LinkedIn Do not contact registry. Review that record under [Settings → Do not contact](https://app.heylemma.com/settings/compliance). **Undo** removes the suppression only; it does not restart the stopped Sequence or re-arm a Mission.
+
+## Current limitations
+
+Outbox does not currently expose generic controls to:
+
+- edit the suggested response;
+- mark the reply **Handled** or **Booked**;
+- change the Lead’s pipeline stage;
+- classify the reply as **Interested**;
+- manually stop every related Mission or Sender from the reply card.
+
+The raw handling status may be visible, but this guide does not treat it as an editable workflow state.
+
+<HelpCallout type="warning" title="A reply is not a qualified outcome">
+Read the actual conversation and Mission criteria. A positive or polite reply does not prove qualification, a booking, or revenue.
+</HelpCallout>
+
+## Next action
+
+Return to the Mission Cockpit for the next decision, or use [Pause, hold, stop, or complete work](/missions/pause-hold-complete) when a wider stop is needed.

@@ -1,0 +1,46 @@
+---
+title: Understand Outbox views and statuses
+description: Keep the top-level views, Open facets, Finished outcomes, and touch evidence separate.
+---
+
+Outbox summarizes one Sequence per Lead and Mission. The row status is not the full state of every touch.
+
+## Top-level views
+
+### Open
+
+Current Sequences that are ready, scheduled, waiting, paused, or in a problem state.
+
+### Needs you
+
+A subset of Sequences with an action Lemma can currently offer. A problem does not automatically belong here. Lemma-led editing and validation controls live on eligible rows under **Open** and do not require the row to appear here.
+
+### Finished
+
+Sequences with a terminal outcome: **Completed**, **Replied**, **Opted out**, or **Stopped**.
+
+## Open facets
+
+- **Ready** — current prerequisites are satisfied; no external result is implied.
+- **Scheduled** — the next touch has a future time.
+- **Waiting** — the Sequence is waiting on a window, capacity, event, or other condition.
+- **Paused** — a Manual workspace or Mission hold is active.
+- **Problems** — a task is blocked or failed and needs diagnosis.
+
+**Running** and **Sent** are not Open Sequence facets. Look inside the Sequence’s individual touches and history for in-progress or provider-confirmed delivery evidence.
+
+## Read the Sequence detail
+
+- **What happens next** summarizes the current known touch.
+- **Planned touches** shows each touch, conditional timing, message, and Sender.
+- **History and provider evidence** distinguishes an internal state from a provider-confirmed result.
+
+A touch can be marked complete without provider confirmation. The detail calls this out explicitly; do not report it as sent.
+
+## Time display
+
+Outbox formats its visible timestamps and date grouping in **Europe/Paris**. The editable **Send date** field is different: it uses the browser’s local timezone before converting the value to an instant. Neither changes the Sender’s configured schedule timezone. See [How Lemma displays time](/reference/timezones).
+
+## Next action
+
+If a Sequence cannot progress, open [Resolve a Sequence problem](/outbox/resolve-problems).

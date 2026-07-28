@@ -1,0 +1,44 @@
+---
+title: Sender
+description: Connect and control the LinkedIn account Lemma may use.
+---
+
+A Sender is the LinkedIn account attached to Lemma’s outbound work. Its identity, connection, execution state, schedule, daily targets, and provider health determine whether eligible work can progress.
+
+## Start with the account
+
+<CardsGrid>
+  <DocCard href="/sender/connect-and-activate" title="Connect a LinkedIn Sender" label="Start here">
+    Connect the correct account and understand when it becomes Ready.
+  </DocCard>
+  <DocCard href="/sender/readiness-and-schedule" title="Check readiness, schedule, and capacity">
+    Read the connection, execution state, configured targets, automatic capacity warm-up, active window, and current limits.
+  </DocCard>
+  <DocCard href="/sender/pause-reconnect-replace" title="Pause, reconnect, or replace">
+    Choose the recovery action that matches what changed.
+  </DocCard>
+</CardsGrid>
+
+## Read the execution state
+
+- **Dry run** — the connection is not currently executable. If the control is available, choose **Activate sending** after checking the account.
+- **Ready** — the Sender can be used by eligible work inside its active schedule and limits.
+- **Paused** — sending was intentionally stopped. Choose **Resume sending** only when the pause can end.
+- **Restricted** — the inline reason explains the provider or account condition preventing execution.
+- **Unavailable (execution badge)** — the Sender exists, but current conditions prevent execution. Read the inline reason and use only the recovery controls the page shows.
+
+<HelpCallout type="note" title="Page-level unavailable or stale state">
+If the page says **Sender readiness is unavailable**, choose **Retry**. If it shows a stale projection, the last verified state stays read-only until **Retry** succeeds. These page-level states are different from an **Unavailable** execution badge.
+</HelpCallout>
+
+<HelpCallout type="note" title="Verification and activation">
+After provider verification succeeds, Connect and Replace normally activate a healthy Sender automatically. Reconnect preserves the existing execution status. **Activate sending** remains for an exceptional or older **Dry run** state; it is not a standard second setup step.
+</HelpCallout>
+
+**Ready** does not mean the full configured daily target is immediately available. Effective invitation and message limits ramp automatically after the first provider-authorized outreach activity. See [Sender readiness, schedule, and capacity](/sender/readiness-and-schedule).
+
+## Open Sender settings
+
+[Open Settings → Sender](https://app.heylemma.com/settings/channels)
+
+A Mission never silently switches to another Sender. Replacement also does not reassign existing tasks.

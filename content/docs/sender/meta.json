@@ -1,0 +1,10 @@
+{
+  "title": "Sender",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "connect-and-activate",
+    "readiness-and-schedule",
+    "pause-reconnect-replace"
+  ]
+}

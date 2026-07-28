@@ -7,6 +7,9 @@ dist/
 build/
 coverage/
 *.tsbuildinfo
+.playwright-cli/
+output/playwright/
+output/audit-*/
 .env
 .env.*
 !.env.example
@@ -15,3 +18,4 @@ coverage/
 docs-inventory/audit-runs/
 public/screenshots/product-audit/03-workspace-settings.png
 public/screenshots/product-audit/04-account-billing.png
+.vercel

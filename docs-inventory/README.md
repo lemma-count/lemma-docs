@@ -1,29 +1,25 @@
-# Product Documentation Audit
+# Lemma Documentation Evidence
 
-This folder keeps the docs tied to the real Lemma product.
+This folder keeps the public Help Center aligned with Lemma’s current professional-outbound product.
 
-Do not expand the public docs from memory alone. For every important feature, capture the product evidence first:
+## Evidence order
 
-1. screen or flow observed in the app
-2. user job supported by that feature
-3. product value worth emphasizing
-4. screenshot or screenshot request
-5. docs page that explains the feature
-6. coverage status
+1. Explicit product decisions and the current Lemma Product KB.
+2. Verified current behavior in `wilu-web`.
+3. Sanitized screenshots from a demo or E2E workspace.
+4. Current marketing copy only when it stays inside verified claim boundaries.
+
+Do not use the retired studies documentation or its screenshots as current product truth.
 
 ## Files
 
-- `product-map.md`: inventory of product areas, screens, jobs, and standout value.
-- `screenshot-manifest.md`: screenshot capture plan for Atlas/browser passes.
-- `coverage-matrix.md`: feature-to-doc coverage tracker.
-- `atlas-agent-prompt.md`: prompt to run an app exploration pass with Atlas or another browser agent.
+- `product-map.md` — shipped product areas and the public job each supports.
+- `coverage-matrix.md` — current docs coverage and known gaps.
+- `screenshot-manifest.md` — approved screenshot sources and recapture needs.
+- `product-defects.md` — confirmed product contradictions or broken flows that public docs must not normalize.
+- `DOCS_PATTERN_NOTES.md` — current benchmark decision and UX rules.
+- `atlas-agent-prompt.md` — a reusable prompt for a read-only product capture pass.
 
-## Rule
+## Publication rule
 
-Every user-facing doc page should have at least one of:
-
-- a verified product screen
-- a screenshot slot tied to a capture ID
-- a clear note that the product behavior is unverified
-
-Avoid documenting roadmap or assumed capabilities as live product behavior.
+Every page needs product evidence, but not every page needs a screenshot. Use a screenshot only when the current UI materially clarifies the task. Never use private customer data, invented UI, a roadmap state, or an obsolete product surface.
