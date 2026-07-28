@@ -13,7 +13,7 @@ export function TrackedAnchor({ event, eventProps, onClick, ...props }: Props) {
     <a
       {...props}
       onClick={(e) => {
-        trackGrowthCta(event, {
+        void trackGrowthCta(event, {
           ...eventProps,
           cta_href: typeof props.href === "string" ? props.href : undefined,
         });

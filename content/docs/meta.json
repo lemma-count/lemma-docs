@@ -3,7 +3,10 @@
   "pages": [
     "index",
     "start",
-    "create",
-    "analyze"
+    "sender",
+    "leads",
+    "missions",
+    "outbox",
+    "reference"
   ]
 }

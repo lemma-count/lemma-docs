@@ -1,0 +1,12 @@
+{
+  "title": "Missions",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "create-lemma-led",
+    "research-and-drafts",
+    "cockpit-and-controls",
+    "build-manually",
+    "pause-hold-complete"
+  ]
+}

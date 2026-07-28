@@ -1,0 +1,46 @@
+---
+title: How Lemma displays time
+description: Interpret Sender schedules, Outbox times, Home activity, and Audit events correctly.
+---
+
+The current product uses four time rules.
+
+## Sender schedule timezone
+
+Under [Settings → Sender](https://app.heylemma.com/settings/channels), **Start**, **End**, active days, capacity windows, and next eligible time use the Sender’s configured timezone.
+
+Choose **Save settings** after changing the timezone.
+
+## Outbox labels and grouping use Europe/Paris
+
+Outbox formats its visible Sequence timestamps and groups rows by date in **Europe/Paris**. The page states **Times shown in Europe/Paris**.
+
+This display does not change the Sender’s configured active schedule. If the Sender uses another timezone, convert the Outbox time before diagnosing whether work is early, late, or outside its active window.
+
+## Send date uses the browser timezone
+
+The editable **Send date** field in a Lemma-authored Sequence uses your browser’s local wall clock. When you choose **Reschedule**, Lemma converts that local value to an absolute time.
+
+If your browser is not set to Europe/Paris, the value in **Send date** and the Paris-formatted timestamp elsewhere in Outbox can show different clock times for the same instant. Confirm your browser timezone before rescheduling.
+
+## Home and Audit use UTC
+
+- Home **Recent external interactions** displays UTC.
+- The Audit log formats event timestamps in UTC.
+
+## Report a timing problem
+
+Include:
+
+- the displayed timestamp and its visible timezone;
+- the value entered in **Send date**, when relevant, and the browser or operating-system timezone;
+- the Sender’s configured timezone;
+- the Mission, Lead, and Sender;
+- a screenshot of the relevant Outbox or Audit entry;
+- whether provider confirmation exists.
+
+Do not describe an unlabelled timestamp as local time.
+
+## Next action
+
+Open [Contact Support](/reference/support) when the same event appears at conflicting times.

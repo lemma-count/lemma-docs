@@ -12,19 +12,18 @@ import {
 import { source } from "@/lib/source";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { siteName } from "@/lib/site";
 
-const retiredPublicSections = new Set([
-  "account",
-  "contacts",
-  "share",
-]);
+const retiredRouteRedirects: Record<string, string> = {
+  "/create": "/missions/create-lemma-led",
+  "/start/how-studies-work": "/start/core-concepts",
+  "/start/navigate-lemma": "/start/core-concepts",
+};
 
-function isRetiredPath(slugs?: string[]) {
-  if (!slugs || slugs.length === 0) return false;
-  if (retiredPublicSections.has(slugs[0])) return true;
-  return slugs[0] === "start" && slugs[1] === "navigate-lemma";
+function getRetiredDestination(slugs?: string[]) {
+  if (!slugs || slugs.length === 0) return null;
+  return retiredRouteRedirects[`/${slugs.join("/")}`] ?? null;
 }
 
 function getHelpArticles(): HelpArticle[] {
@@ -44,7 +43,8 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  if (!page && isRetiredPath(params.slug)) redirect("/");
+  const retiredDestination = getRetiredDestination(params.slug);
+  if (!page && retiredDestination) permanentRedirect(retiredDestination);
   if (!page) notFound();
 
   const articles = getHelpArticles();
@@ -101,12 +101,17 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  if (!page && isRetiredPath(params.slug)) {
+  const retiredDestination = getRetiredDestination(params.slug);
+  if (!page && retiredDestination) {
     return {
       title: {
-        absolute: "Lemma Help Center",
+        absolute: siteName,
       },
-      description: "Find practical answers for creating studies and reviewing results in Lemma.",
+      description:
+        "Practical guidance for researched, reviewable, operator-controlled outbound with Lemma.",
+      alternates: {
+        canonical: retiredDestination,
+      },
     };
   }
   if (!page) notFound();
@@ -115,12 +120,32 @@ export async function generateMetadata(props: {
     title:
       page.url === "/"
         ? {
-            absolute: "Lemma Help Center",
+            absolute: siteName,
           }
         : page.data.title,
     description: page.data.description,
     alternates: {
       canonical: page.url,
+    },
+    openGraph: {
+      type: page.url === "/" ? "website" : "article",
+      title: page.url === "/" ? siteName : page.data.title,
+      description: page.data.description,
+      url: page.url,
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: "Lemma Help Center — One clear next step for every outbound job.",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.url === "/" ? siteName : page.data.title,
+      description: page.data.description,
+      images: ["/og.png"],
     },
   };
 }

@@ -1,10 +1,12 @@
 {
-  "title": "Getting Started",
+  "title": "Start here",
   "defaultOpen": true,
   "pages": [
     "index",
+    "onboarding",
     "quickstart",
+    "home",
     "what-is-lemma",
-    "how-studies-work"
+    "core-concepts"
   ]
 }

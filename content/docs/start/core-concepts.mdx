@@ -1,0 +1,74 @@
+---
+title: Core concepts and state models
+description: Learn how Leads, Senders, Missions, Sequences, Cockpit, and Outbox fit together without mixing their states.
+---
+
+Lemma connects one outbound goal to the people, account, messages, controls, and evidence needed to run it.
+
+## The six product concepts
+
+<TwoColumn>
+  <Panel title="Lead">
+    A person in your workspace. Lists, Mission membership, imported and inferred information, restrictions, and activity stay attached to the Lead.
+  </Panel>
+  <Panel title="Sender">
+    The connected LinkedIn account Lemma may use. Identity, readiness, schedule, daily targets, pauses, restrictions, and provider health affect execution.
+  </Panel>
+  <Panel title="Mission">
+    One outbound goal that joins a Lead set, research, plan, Sender, Sequences, approval choice, and outcomes.
+  </Panel>
+  <Panel title="Sequence">
+    The ordered LinkedIn touches for one Lead in one Mission.
+  </Panel>
+  <Panel title="Cockpit">
+    The control surface for one Mission. Lemma-led Cockpit contains conversation and approval controls; Manual Cockpit contains audience and queue truth with direct Pause or Resume.
+  </Panel>
+  <Panel title="Outbox">
+    The workspace-wide queue of one Sequence per Lead and Mission. Use it for timing, available actions, replies, problems, and evidence.
+  </Panel>
+</TwoColumn>
+
+## Operator and provider confirmation
+
+- **Operator** is the public name for a workspace member with full access to Lemma’s outbound workspace.
+- **Provider confirmation** is evidence that LinkedIn or the connected provider accepted an external action. It is stronger than an internal queue or task status.
+
+## Keep the state models separate
+
+### Mission lifecycle
+
+Public lifecycle labels include **Needs input**, **Active** or **Live**, **Paused**, **Finishing**, **Completed**, and **Failed**. An unlaunched Manual setup can appear as **Draft**. Lemma-led Cockpit can also show the phase currently being worked: Clarify, Select leads, Research, Plan, Execute, or Monitor.
+
+### Outbox views
+
+- **Open** — current Sequences.
+- **Needs you** — Sequences with an action Lemma can currently offer.
+- **Finished** — completed, replied, opted-out, or stopped Sequences.
+
+### Open Sequence facets
+
+- **Ready**
+- **Scheduled**
+- **Waiting**
+- **Paused**
+- **Problems**
+
+These are the filters shown in Outbox. **Running** and **Sent** are not top-level Sequence facets.
+
+### Touch and delivery evidence
+
+Inside a Sequence, an individual touch can be pending, approved, sending, completed, failed, canceled, or otherwise constrained by its current task state. The detail and history explain whether it is merely planned, in progress, or provider-confirmed.
+
+<HelpCallout type="insight" title="The row is a summary">
+Read the Outbox row for the next known step, then open the Sequence for touch-level timing, history, and provider evidence.
+</HelpCallout>
+
+## Approval is path- and scope-specific
+
+- **Lemma-led Mission:** choose **Review approval** or **Auto approval** in Cockpit. Approve the exact Mission-level request in the Cockpit conversation.
+- **Lemma-authored Sequence:** under **Outbox → Open**, choose **Validate sequence** to approve and freeze one eligible prospect’s current message bodies. Use **Batch validate** for an eligible selection or filtered Mission.
+- **Manual:** the wizard’s **Review** step checks the exact audience and rendered messages. **Launch Mission** commits that review. Manual Outbox actions appear only where the current Sequence supports them.
+
+## Next action
+
+Read [Create a Lemma-led Mission](/missions/create-lemma-led) or [Build a Mission manually](/missions/build-manually).

@@ -1,11 +1,18 @@
 "use client";
 
-import posthog from "posthog-js";
 import type { CaptureResult, Properties } from "posthog-js";
+import { siteUrl } from "@/lib/site";
 
 const POSTHOG_PROJECT_TOKEN = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 const POSTHOG_HOST =
   process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
+const PUBLIC_SITE_HOSTNAME = new URL(siteUrl).hostname;
+
+type PostHogClient = typeof import("posthog-js").default;
+
+let posthogClient: PostHogClient | null = null;
+let posthogLoader: Promise<PostHogClient | null> | null = null;
+let posthogInitialization: Promise<boolean> | null = null;
 
 declare global {
   interface Window {
@@ -48,6 +55,7 @@ function getPageType(pathname: string) {
 
 function getEnvironment(hostname: string) {
   if (hostname === "localhost" || hostname === "127.0.0.1") return "development";
+  if (hostname === PUBLIC_SITE_HOSTNAME) return "production";
   if (hostname.endsWith(".vercel.app")) return "preview";
 
   return "production";
@@ -59,8 +67,7 @@ function isInternalTraffic(url: URL) {
   return (
     url.searchParams.get("growth_internal") === "1" ||
     hostname === "localhost" ||
-    hostname === "127.0.0.1" ||
-    hostname.endsWith(".vercel.app")
+    hostname === "127.0.0.1"
   );
 }
 
@@ -113,45 +120,78 @@ function enrichEvent(event: CaptureResult | null) {
   };
 }
 
-export function initGrowthAnalytics() {
-  if (typeof window === "undefined") return false;
-  if (window.__growthPostHogInitialized) return true;
-  if (!POSTHOG_PROJECT_TOKEN) return false;
+async function loadPostHog() {
+  if (!POSTHOG_PROJECT_TOKEN || typeof window === "undefined") return null;
+  if (posthogClient) return posthogClient;
 
-  posthog.init(POSTHOG_PROJECT_TOKEN, {
-    api_host: POSTHOG_HOST,
-    defaults: "2026-01-30",
-    capture_pageview: false,
-    autocapture: false,
-    disable_session_recording: true,
-    request_batching: false,
-    before_send: enrichEvent,
+  posthogLoader ??= import("posthog-js").then((module) => {
+    posthogClient = module.default;
+    return posthogClient;
   });
-  posthog.register(getGrowthAnalyticsProperties());
-  window.__growthPostHogInitialized = true;
 
-  return true;
+  return posthogLoader;
+}
+
+export function initGrowthAnalytics(): Promise<boolean> {
+  if (typeof window === "undefined") return Promise.resolve(false);
+  if (window.__growthPostHogInitialized) return Promise.resolve(true);
+  if (!POSTHOG_PROJECT_TOKEN) return Promise.resolve(false);
+
+  posthogInitialization ??= (async () => {
+    const posthog = await loadPostHog();
+    if (!posthog) return false;
+
+    if (!window.__growthPostHogInitialized) {
+      posthog.init(POSTHOG_PROJECT_TOKEN, {
+        api_host: POSTHOG_HOST,
+        defaults: "2026-01-30",
+        capture_pageview: false,
+        autocapture: false,
+        disable_session_recording: true,
+        request_batching: false,
+        before_send: enrichEvent,
+      });
+      posthog.register(getGrowthAnalyticsProperties());
+      window.__growthPostHogInitialized = true;
+    }
+
+    return true;
+  })();
+
+  return posthogInitialization;
 }
 
 export function refreshGrowthAnalyticsProperties() {
-  if (typeof window === "undefined" || !window.__growthPostHogInitialized) return;
+  if (
+    typeof window === "undefined" ||
+    !window.__growthPostHogInitialized ||
+    !posthogClient
+  ) {
+    return;
+  }
 
-  posthog.register(getGrowthAnalyticsProperties());
+  posthogClient.register(getGrowthAnalyticsProperties());
 }
 
 export function trackGrowthPageview() {
-  if (typeof window === "undefined" || !window.__growthPostHogInitialized) return;
+  if (
+    typeof window === "undefined" ||
+    !window.__growthPostHogInitialized ||
+    !posthogClient
+  ) {
+    return;
+  }
 
-  posthog.capture("$pageview", getGrowthAnalyticsProperties());
+  posthogClient.capture("$pageview", getGrowthAnalyticsProperties());
 }
 
-export function trackGrowthCta(
+export async function trackGrowthCta(
   ctaEvent: string,
   properties: Record<string, GrowthPropertyValue | null | undefined> = {},
 ) {
-  if (typeof window === "undefined" || !window.__growthPostHogInitialized) return;
+  if (!(await initGrowthAnalytics()) || !posthogClient) return;
 
-  posthog.capture("growth_cta_clicked", {
+  posthogClient.capture("growth_cta_clicked", {
     ...getGrowthAnalyticsProperties(),
     ...cleanProperties({
       cta_event: ctaEvent,

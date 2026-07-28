@@ -1,0 +1,17 @@
+{
+  "title": "Reference",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "execution-truth",
+    "safety-boundaries",
+    "timezones",
+    "audit-log",
+    "about-me",
+    "about-offer",
+    "roles-and-access",
+    "account-data-billing",
+    "troubleshooting",
+    "support"
+  ]
+}

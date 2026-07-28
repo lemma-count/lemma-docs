@@ -1,63 +1,38 @@
-# Self-Serve Documentation Pattern Notes
+# Self-Serve Documentation Pattern Decision
 
-Date: 2026-05-19
+Updated: 2026-07-24
 
-These notes capture the public documentation patterns used for the current Lemma docs refactor.
+## References
 
-## Sources Reviewed
+- Primary: [Gamma Help Center](https://help.gamma.app/en/)
+- Navigation and article progression: [Linear Docs](https://linear.app/docs)
+- Outbound workflow framing: [Clay University](https://university.clay.com/)
+- Additional comparison: [Attio Help](https://attio.com/help), [Apollo Knowledge Base](https://knowledge.apollo.io/hc/en-us), [Instantly Help](https://help.instantly.ai/en/)
 
-- Gamma Help Center: https://help.gamma.app/en/
-- Gamma article example: https://help.gamma.app/en/articles/7838093-how-do-i-create-a-new-presentation-document-or-webpage-in-gamma
-- Gamma troubleshooting example: https://help.gamma.app/en/articles/12805003-gamma-api-troubleshooting
-- Stripe quickstarts: https://docs.stripe.com/quickstarts
-- Typeform first-form guide: https://help.typeform.com/hc/en-us/articles/360053660271-My-first-form
-- Linear docs home: https://linear.app/docs
-- Slack quick start guide: https://slack.com/help/articles/360059928654-How-to-use-Slack--your-quick-start-guide
-- Intercom getting started collection: https://www.intercom.com/help/en/collections/1865264-getting-started
-- Notion getting started category: https://www.notion.com/en-gb/help/category/new-to-notion
-- Vercel getting started guide: https://vercel.com/docs/getting-started-with-vercel
+## Decision
 
-## Gamma Pattern Audit
+Use Gamma’s shallow search-first home and curated first-value questions. Use Linear’s breadcrumbs, contextual collection navigation, table of contents, and previous/next progression. Use Clay’s job-based path from setup through an outbound workflow.
 
-Gamma's Help Center is optimized for non-technical end users:
+Do not copy Gamma’s Intercom shell, Linear’s dense feature taxonomy, Clay’s course catalog, Apollo’s scale, or Instantly’s long category dump.
 
-1. The homepage is search-first, then organized into clear user-facing collections.
-2. Collections use plain jobs and product areas: basics, editing, AI generation, sharing, websites, integrations, accounts, billing, security, troubleshooting, and community tips.
-3. Article titles are mostly questions: "How do I...", "What is...", "Can I...", "Why isn't...".
-4. Articles use a repeatable template: short answer, introduction, explanation, numbered steps, screenshots, callouts, FAQs, related articles, and feedback.
-5. Screenshots are tied to the step or product surface being explained.
-6. Most articles include "FAQs & Common Issues" even when the main body already explains the feature.
-7. Troubleshooting pages are symptom-first: what happened, why it happens, what to try next.
+## Lemma translation
 
-## Lemma Translation
+- Lead with six concrete tasks before the collection taxonomy.
+- Keep six shallow collections: Start, Sender, Leads, Missions, Outbox, Reference.
+- Use the article pattern: purpose → outcome → prerequisites → numbered steps → expected result → recovery → next action.
+- Keep articles in restrained brand “Proof mode”; use one approved Architectural Horizon moment on the home page.
+- Use a real mobile menu, wrapping task labels, skip navigation, semantic landmarks, visible focus, and no obstructive overlays.
+- Verify at 1440, 768, 390, and 320 pixels. Competitor mobile clipping is a warning, not a pattern.
 
-Lemma should borrow Gamma's operating system, not its exact IA.
+## Brand foundation
 
-Current docs recipe:
+Use the approved Willow/WiLu Lemma brand kit v1.4.0 as the source of truth:
 
-1. Use question titles for pages where the user has a concrete job.
-2. Keep collections compact: Getting Started, Designing Studies, Contacts & Audiences, Launching Studies, Responses & Evidence, Workspace & Account.
-3. Give every public docs page one high-quality product screenshot by default.
-4. Add "FAQs & Common Issues" to every page.
-5. Use callouts consistently:
-   - `insight`: why the workflow matters for better evidence
-   - `tip`: how to do the job better or faster
-   - `note`: product limits, unverified behavior, permissions, credits, or account details
-6. End workflow pages with related articles that point to the next likely action.
-7. Keep Lemma more opinionated than Gamma: every page should help users get better evidence, not merely locate a control.
+- Open Passage identity with the canonical horizontal Ink and Paper lockups.
+- Paper, Ink, Klein Blue, and semantic Signal tokens.
+- Inter Tight for display, reading, navigation, and actions.
+- Sometype Mono for structural labels, indexes, and evidence states.
+- Four-pixel control radii, eight-pixel proof surfaces, and one-pixel structural rules.
+- The approved **Return Signal** Architectural Horizon visual for the Help Center home and social card.
 
-## Current Lemma IA
-
-1. Getting Started
-2. Designing Studies
-3. Contacts & Audiences
-4. Launching Studies
-5. Responses & Evidence
-6. Workspace & Account
-
-Removed from the current docs IA:
-
-- Reference section
-- Replace Static Forms page
-- Plans and Billing page
-- separate output pages for Doc, Slides, and Export
+The retired Guided Horizon landscapes, screenprinted terrain, serif signature layer, and soft oversized SaaS cards must not return.

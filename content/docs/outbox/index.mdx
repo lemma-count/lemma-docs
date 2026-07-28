@@ -1,0 +1,48 @@
+---
+title: Outbox
+description: Inspect one Sequence per Lead and Mission, use the actions currently available, and verify external outcomes.
+---
+
+Outbox is the workspace-wide view of LinkedIn Sequences. Each row represents one Lead’s complete Sequence in one Mission and shows the next known touch.
+
+## Use the three views
+
+- **Open** — current Sequences.
+- **Needs you** — Sequences with a decision or action Lemma can currently offer.
+- **Finished** — completed, replied, opted-out, or stopped outcomes.
+
+Problems are under **Open → Problems**. Do not use **Needs you** as the generic failure queue.
+
+## Choose the job
+
+<CardsGrid>
+  <DocCard href="/outbox/review-sequences" title="Review a Sequence" label="Review">
+    Open one Lead and Mission, inspect the touch plan, and use only its available controls.
+  </DocCard>
+  <DocCard href="/outbox/understand-statuses" title="Understand views and statuses">
+    Keep views, Sequence facets, outcomes, and touch evidence separate.
+  </DocCard>
+  <DocCard href="/outbox/resolve-problems" title="Resolve a Sequence problem">
+    Start from Open → Problems and retry only when the external outcome is clear.
+  </DocCard>
+  <DocCard href="/outbox/handle-replies" title="Handle replies">
+    Read the inbound message and understand the limits of the current suggested-reply action.
+  </DocCard>
+</CardsGrid>
+
+## Open a Sequence
+
+Choose a row or **Open Sequence**. The drawer shows:
+
+- the Mission and Lead;
+- Sender and next known touch;
+- planned touches and conditional timing;
+- inbound replies, when present;
+- **History and provider evidence**;
+- only the controls allowed for the current Sequence.
+
+<HelpCallout type="warning" title="Controls differ by Mission type">
+Cockpit controls Lemma-led Mission approval. Under **Open**, eligible Lemma-authored Sequences also let you edit, add, or remove unsent touches; re-anchor the eligible pre-send schedule; set Sequence-wide priority; and validate the active Sequence revision. Manual Sequences can instead expose actions such as approve a revision, retry, stop, pause the Manual Mission, or queue a suggested reply. Never assume a control exists until the current surface shows it.
+</HelpCallout>
+
+[Open Outbox](https://app.heylemma.com/outbox)

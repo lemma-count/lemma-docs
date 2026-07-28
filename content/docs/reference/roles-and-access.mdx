@@ -1,0 +1,55 @@
+---
+title: Operators and workspace access
+description: Understand the current full-access Operator model and switch between accessible workspaces.
+---
+
+**Operator** is Lemma’s public name for a person with access to an outbound workspace. The underlying technical role may still appear as `sponsor` in older data or system diagnostics.
+
+## Current permission model
+
+The current Lemma outbound product exposes one full-access Operator model. It does not expose granular Viewer, Editor, Admin, or Owner tiers.
+
+An Operator can access Leads, Missions, outbound work, Settings, and the controls available in the active workspace.
+
+<HelpCallout type="warning" title="There is no read-only workspace access">
+Treat Operator access as consequential access to the workspace and its outbound controls.
+</HelpCallout>
+
+## Switch or create a workspace
+
+<Steps>
+<Step>
+
+### Open the workspace switcher
+
+Use the workspace switcher in the app navigation.
+
+</Step>
+<Step>
+
+### Choose an accessible workspace
+
+Select a workspace from the list to make it active. Leads, Missions, Settings, and outbound state are scoped to that active workspace.
+
+</Step>
+<Step>
+
+### Create a workspace when needed
+
+Choose **Create new workspace** in the switcher and follow the setup flow.
+
+</Step>
+</Steps>
+
+The current product does not expose a live **Settings → Organization** page or self-serve flows to invite teammates, revoke invitations, or approve access requests.
+
+## If a control is missing
+
+Check:
+
+1. that the correct workspace is active;
+2. that the signed-in person has Operator access to it;
+3. that the current resource is not read-only, archived, Finishing, Completed, or Failed;
+4. that the control is valid for the Mission type and current state.
+
+Use [Support](/reference/support) when the active Operator still cannot open an expected route.

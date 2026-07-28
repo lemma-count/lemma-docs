@@ -1,0 +1,11 @@
+{
+  "title": "Outbox",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "review-sequences",
+    "understand-statuses",
+    "resolve-problems",
+    "handle-replies"
+  ]
+}
