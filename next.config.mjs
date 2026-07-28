@@ -19,7 +19,7 @@ const nextConfig = {
               "img-src 'self' data: https:",
               "font-src 'self' data:",
               "style-src 'self' 'unsafe-inline'",
-              "script-src 'self' 'unsafe-inline'",
+              "script-src 'self' 'unsafe-inline' https://eu-assets.i.posthog.com",
               "connect-src 'self' https://us.i.posthog.com https://*.posthog.com",
               "upgrade-insecure-requests",
             ].join("; "),
