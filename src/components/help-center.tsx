@@ -213,7 +213,7 @@ export function HelpHeader({
             aria-label="Lemma Help Center"
           >
             <img
-              src="/brand/logo/lemma-lockup-horizontal-ink.svg"
+              src="/brand/logo/lemma-lockup-horizontal-ink-ui.svg"
               alt="Lemma"
               className="h-[25px] w-auto shrink-0"
             />
@@ -282,7 +282,7 @@ export function HelpFooter() {
         <div>
           <div className="flex items-center gap-3">
             <img
-              src="/brand/logo/lemma-lockup-horizontal-paper.svg"
+              src="/brand/logo/lemma-lockup-horizontal-paper-ui.svg"
               alt="Lemma"
               className="h-[25px] w-auto"
             />
