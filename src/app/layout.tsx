@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     "Practical guidance for connecting a Sender, adding Leads, creating Missions, reviewing Sequences, and running controlled LinkedIn outreach with Lemma.",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg?v=2.0.1", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=2.0.1", sizes: "any" },
     ],
     apple: "/apple-touch-icon.png",
   },
