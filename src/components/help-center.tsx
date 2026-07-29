@@ -9,14 +9,12 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronRight,
-  CircleHelp,
   Compass,
   MessageSquareWarning,
   MessageSquareReply,
   RadioTower,
   Send,
   ShieldCheck,
-  ThumbsUp,
   UsersRound,
 } from "lucide-react";
 import type { TableOfContents } from "fumadocs-core/toc";
@@ -26,7 +24,7 @@ import {
 } from "@/components/help-search";
 import { MobileHelpMenu } from "@/components/mobile-help-menu";
 import { TrackedAnchor } from "@/components/tracked-anchor";
-import { appUrl, supportEmail } from "@/lib/site";
+import { appUrl } from "@/lib/site";
 import startMeta from "../../content/docs/start/meta.json";
 import senderMeta from "../../content/docs/sender/meta.json";
 import leadsMeta from "../../content/docs/leads/meta.json";
@@ -51,6 +49,38 @@ export type HelpCollection = {
   icon: LucideIcon;
   articles: HelpArticle[];
 };
+
+type PrimaryHelpItem = {
+  id: string;
+  title: string;
+  url: string;
+};
+
+const primaryHelpNav: PrimaryHelpItem[] = [
+  { id: "new", title: "New to Lemma", url: "/start" },
+  { id: "tasks", title: "Do a task", url: "/#tasks" },
+  {
+    id: "troubleshoot",
+    title: "Troubleshoot",
+    url: "/reference/troubleshooting",
+  },
+  { id: "reference", title: "Reference", url: "/reference" },
+];
+
+function isPrimaryHelpItemActive(item: PrimaryHelpItem, activeUrl?: string) {
+  if (!activeUrl) return false;
+  if (item.id === "new") return activeUrl.startsWith("/start");
+  if (item.id === "troubleshoot") {
+    return activeUrl === "/reference/troubleshooting";
+  }
+  if (item.id === "reference") {
+    return (
+      activeUrl.startsWith("/reference") &&
+      activeUrl !== "/reference/troubleshooting"
+    );
+  }
+  return false;
+}
 
 const collectionConfigs = [
   {
@@ -163,11 +193,9 @@ export function getPopularArticles(pages: HelpArticle[]) {
 }
 
 export function HelpHeader({
-  collections,
-  activeSlug,
+  activeUrl,
 }: {
-  collections: HelpCollection[];
-  activeSlug?: string;
+  activeUrl?: string;
 }) {
   return (
     <>
@@ -195,26 +223,27 @@ export function HelpHeader({
           </Link>
 
           <nav
-            aria-label="Help collections"
+            aria-label="Primary help"
             className="ml-2 hidden min-w-0 flex-1 items-center gap-0.5 xl:flex"
           >
-            {collections.map((collection) => (
+            {primaryHelpNav.map((item) => {
+              const isActive = isPrimaryHelpItemActive(item, activeUrl);
+              return (
               <Link
-                key={collection.slug}
-                href={collection.url}
-                aria-current={
-                  activeSlug === collection.slug ? "location" : undefined
-                }
+                key={item.id}
+                href={item.url}
+                aria-current={isActive ? "location" : undefined}
                 className={[
                   "whitespace-nowrap rounded px-3 py-2 text-sm font-medium transition",
-                  activeSlug === collection.slug
+                  isActive
                     ? "bg-[var(--surface)] text-[var(--accent)]"
                     : "text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]",
                 ].join(" ")}
               >
-                {collection.label}
+                {item.title}
               </Link>
-            ))}
+              );
+            })}
           </nav>
 
           <div className="ml-auto hidden shrink-0 items-center gap-3 lg:flex">
@@ -234,12 +263,10 @@ export function HelpHeader({
           </div>
 
           <MobileHelpMenu
-            collections={collections.map(({ slug, title, url }) => ({
-              slug,
-              title,
-              url,
+            items={primaryHelpNav.map((item) => ({
+              ...item,
+              active: isPrimaryHelpItemActive(item, activeUrl),
             }))}
-            activeSlug={activeSlug}
           />
         </div>
       </header>
@@ -322,8 +349,8 @@ export function HelpHome({
               One clear next step for every outbound job.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--body)] sm:text-lg sm:leading-8">
-              Connect a LinkedIn Sender, add Leads, create a Mission, review
-              what Lemma prepares, and act on replies or problems.
+              New to Lemma? Follow one guided path from the five core concepts
+              to your first reviewed Sequence and verified outcome.
             </p>
             <div className="mt-8 max-w-2xl">
               <HelpSearchButton />
@@ -332,21 +359,21 @@ export function HelpHome({
             <div className="mt-8 grid max-w-2xl gap-5 border-t border-[var(--border)] pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
               <div>
                 <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--accent)]">
-                  Shortest path
+                  New to Lemma
                 </div>
                 <h2 className="mt-2 text-lg font-semibold text-[var(--ink)]">
-                  Run your first Mission
+                  Start with Lemma 101
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
-                  From a connected Sender and a small List to Mission approval
-                  in Cockpit, then Sequence review and validation in Outbox.
+                  Learn the map first, then follow the setup path that matches
+                  your current setup.
                 </p>
               </div>
               <Link
-                href="/start/quickstart"
+                href="/start/lemma-101"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded bg-[var(--accent)] px-4 text-sm font-semibold text-white transition hover:bg-[var(--accent-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
               >
-                Open quickstart
+                Start Lemma 101
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
             </div>
@@ -371,6 +398,58 @@ export function HelpHome({
       <section className="mx-auto max-w-[1400px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+            Choose a path
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-[700] tracking-[-0.035em] text-[var(--ink)] sm:text-4xl">
+            Start from what you need now.
+          </h2>
+          <p className="mt-3 text-base leading-7 text-[var(--muted)]">
+            You do not need to know which product area contains the answer.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          <IntentCard
+            href="/start/lemma-101"
+            icon={Compass}
+            label="New to Lemma"
+            title="Follow the beginner path"
+          >
+            Learn the map, set up, review one Sequence, and verify what happened.
+          </IntentCard>
+          <IntentCard
+            href="/#tasks"
+            icon={CheckCircle2}
+            label="Do a task"
+            title="Get something done"
+          >
+            Jump directly to a setup, import, Mission, review, or recovery guide.
+          </IntentCard>
+          <IntentCard
+            href="/reference/troubleshooting"
+            icon={MessageSquareWarning}
+            label="Something is wrong"
+            title="Troubleshoot a problem"
+          >
+            Diagnose blocked work from the state or symptom you can see.
+          </IntentCard>
+          <IntentCard
+            href="/reference"
+            icon={BookOpen}
+            label="Look something up"
+            title="Open the reference"
+          >
+            Check product terms, execution truth, safety, time, and account rules.
+          </IntentCard>
+        </div>
+      </section>
+
+      <section
+        id="tasks"
+        className="scroll-mt-24 border-y border-[var(--border)] bg-[var(--surface)]"
+      >
+        <div className="mx-auto max-w-[1400px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div className="max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
             Get something done
           </p>
           <h2 className="mt-3 font-display text-3xl font-[700] tracking-[-0.035em] text-[var(--ink)] sm:text-4xl">
@@ -386,54 +465,35 @@ export function HelpHome({
             />
           ))}
         </div>
+        </div>
       </section>
 
-      <section className="border-y border-[var(--border)] bg-[var(--surface)]">
+      <section>
         <div className="mx-auto max-w-[1400px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-              Browse the workflow
+              Browse product areas
             </p>
             <h2 className="mt-3 font-display text-3xl font-[700] tracking-[-0.035em] text-[var(--ink)] sm:text-4xl">
-              Guidance organized around how outbound moves.
+              Go deeper once you know the area.
             </h2>
             <p className="mt-3 text-base leading-7 text-[var(--muted)]">
-              Start with setup, then move through Leads, Missions, review, and
-              recovery without learning Lemma’s internal architecture.
+              Use these collections when you already know which part of the
+              workflow you need.
             </p>
           </div>
           <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {collections.map((collection) => (
-              <CollectionCard key={collection.slug} collection={collection} />
-            ))}
+            {collections
+              .filter(({ slug }) =>
+                ["sender", "leads", "missions", "outbox"].includes(slug),
+              )
+              .map((collection) => (
+                <CollectionCard key={collection.slug} collection={collection} />
+              ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[1400px] gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:px-10 lg:py-16">
-        <ExecutionTruthPanel />
-        <div className="self-center">
-          <div className="flex items-center gap-2 text-sm font-semibold text-[var(--accent)]">
-            <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
-            Execution stays legible
-          </div>
-          <h2 className="mt-3 font-display text-3xl font-[700] tracking-[-0.035em] text-[var(--ink)]">
-            Prepared is not sent.
-          </h2>
-          <p className="mt-4 text-base leading-7 text-[var(--muted)]">
-            This conceptual path explains execution boundaries; it is not a
-            list of Outbox filters. Outbox separately shows Sequence views,
-            facets, outcomes, and provider evidence.
-          </p>
-          <Link
-            href="/outbox/understand-statuses"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:text-[var(--accent-strong)]"
-          >
-            Understand Outbox statuses
-            <ArrowRight aria-hidden="true" className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
     </main>
   );
 }
@@ -466,11 +526,93 @@ export function HelpArticleShell({
   const currentIndex = collectionNavItems.findIndex(
     (article) => article.url === page.url,
   );
-  const previous = currentIndex > 0 ? collectionNavItems[currentIndex - 1] : null;
-  const next =
+  const collectionPrevious =
+    currentIndex > 0 ? collectionNavItems[currentIndex - 1] : null;
+  const collectionNext =
     currentIndex >= 0 && currentIndex < collectionNavItems.length - 1
       ? collectionNavItems[currentIndex + 1]
       : null;
+  const journeyPagination: Record<
+    string,
+    {
+      previous: { title: string; url: string } | null;
+      next: { title: string; url: string } | null;
+    }
+  > = {
+    "/start": {
+      previous: null,
+      next: { title: "Lemma 101", url: "/start/lemma-101" },
+    },
+    "/start/lemma-101": {
+      previous: { title: "Start here", url: "/start" },
+      next: { title: "Choose your setup path", url: "/start#choose-your-path" },
+    },
+    "/start/onboarding": {
+      previous: {
+        title: "Choose your setup path",
+        url: "/start#choose-your-path",
+      },
+      next: {
+        title: "Review your first Sequence",
+        url: "/start/review-first-sequence",
+      },
+    },
+    "/start/quickstart": {
+      previous: {
+        title: "Choose your setup path",
+        url: "/start#choose-your-path",
+      },
+      next: {
+        title: "Review your first Sequence",
+        url: "/start/review-first-sequence",
+      },
+    },
+    "/start/review-first-sequence": {
+      previous: {
+        title: "Choose your setup path",
+        url: "/start#choose-your-path",
+      },
+      next: {
+        title: "Verify the first outcome",
+        url: "/start/verify-first-outcome",
+      },
+    },
+    "/start/verify-first-outcome": {
+      previous: {
+        title: "Review your first Sequence",
+        url: "/start/review-first-sequence",
+      },
+      next: { title: "Understand Home", url: "/start/home" },
+    },
+    "/start/home": {
+      previous: {
+        title: "Verify the first outcome",
+        url: "/start/verify-first-outcome",
+      },
+      next: null,
+    },
+  };
+  const journey = journeyPagination[page.url];
+  const previous = journey ? journey.previous : collectionPrevious;
+  const next = journey ? journey.next : collectionNext;
+  const beginnerProgress: Record<
+    string,
+    { current: number; label: string }
+  > = {
+    "/start/lemma-101": { current: 1, label: "Learn the map" },
+    "/start/onboarding": { current: 2, label: "Complete first-time setup" },
+    "/start/quickstart": { current: 2, label: "Prepare your current setup" },
+    "/start/review-first-sequence": {
+      current: 3,
+      label: "Review the first Sequence",
+    },
+    "/start/verify-first-outcome": {
+      current: 4,
+      label: "Verify what happened",
+    },
+  };
+  const progress = beginnerProgress[page.url];
+  const tocItems = toc.filter((item) => item.depth <= 3);
   const isCollectionIndex = collection?.url === page.url;
   const CollectionIcon = collection?.icon;
 
@@ -538,6 +680,35 @@ export function HelpArticleShell({
                 {page.description}
               </p>
             ) : null}
+            {progress ? (
+              <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
+                <div className="flex items-center justify-between gap-4 text-sm">
+                  <span className="font-semibold text-[var(--ink)]">
+                    Lemma 101 · Step {progress.current} of 4
+                  </span>
+                  <span className="text-right text-[var(--muted)]">
+                    {progress.label}
+                  </span>
+                </div>
+                <div
+                  className="mt-3 grid grid-cols-4 gap-1.5"
+                  aria-label={`Step ${progress.current} of 4`}
+                >
+                  {[1, 2, 3, 4].map((step) => (
+                    <span
+                      key={step}
+                      aria-hidden="true"
+                      className={[
+                        "h-1.5 rounded-full",
+                        step <= progress.current
+                          ? "bg-[var(--accent)]"
+                          : "bg-[var(--border)]",
+                      ].join(" ")}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
 
           {collection && collectionNavItems.length > 1 ? (
@@ -568,6 +739,32 @@ export function HelpArticleShell({
                     </Link>
                   );
                 })}
+              </nav>
+            </details>
+          ) : null}
+
+          {tocItems.length > 2 ? (
+            <details className="group/toc mb-6 rounded-lg border border-[var(--border)] bg-white p-4 lg:hidden">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] [&::-webkit-details-marker]:hidden">
+                <span>On this page</span>
+                <ChevronDown
+                  aria-hidden="true"
+                  className="h-4 w-4 shrink-0 text-[var(--muted)] transition-transform group-open/toc:rotate-180 motion-reduce:transition-none"
+                />
+              </summary>
+              <nav className="mt-3 grid gap-1" aria-label="Table of contents">
+                {tocItems.map((item) => (
+                  <a
+                    key={item.url}
+                    href={item.url}
+                    className={[
+                      "rounded px-3 py-2 text-sm leading-5 text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]",
+                      item.depth === 3 ? "ml-3" : "",
+                    ].join(" ")}
+                  >
+                    {item.title}
+                  </a>
+                ))}
               </nav>
             </details>
           ) : null}
@@ -612,7 +809,6 @@ export function HelpArticleShell({
             </nav>
           )}
 
-          <ArticleFeedback page={page} collection={collection} />
         </div>
 
         <aside className="hidden lg:block">
@@ -645,15 +841,13 @@ export function HelpArticleShell({
                 </nav>
               </div>
             ) : null}
-            {toc.length > 0 ? (
+            {tocItems.length > 0 ? (
               <div className="rounded-lg border border-[var(--border)] bg-white p-4">
                 <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--subtle)]">
                   On this page
                 </div>
                 <nav className="mt-3 space-y-2" aria-label="Table of contents">
-                  {toc
-                    .filter((item) => item.depth <= 3)
-                    .map((item) => (
+                  {tocItems.map((item) => (
                       <a
                         key={item.url}
                         href={item.url}
@@ -704,81 +898,43 @@ function CollectionCard({ collection }: { collection: HelpCollection }) {
   );
 }
 
-function ExecutionTruthPanel() {
-  const states = [
-    {
-      label: "Prepared",
-      detail: "Research and Drafts remain reviewable",
-      status: "Needs review",
-    },
-    {
-      label: "Approved",
-      detail: "Eligible inside the Mission boundary",
-      status: "Not sent",
-    },
-    {
-      label: "Scheduled",
-      detail: "Waiting for timing and Sender conditions",
-      status: "Not sent",
-    },
-    {
-      label: "Sent",
-      detail: "Backed by provider execution evidence",
-      status: "Provider-confirmed",
-    },
-  ];
-
+function IntentCard({
+  href,
+  icon: Icon,
+  label,
+  title,
+  children,
+}: {
+  href: string;
+  icon: LucideIcon;
+  label: string;
+  title: string;
+  children: ReactNode;
+}) {
   return (
-    <div className="overflow-hidden rounded-lg border border-[var(--border)] bg-white shadow-[0_24px_70px_-42px_rgba(18,18,18,0.28)]">
-      <div className="flex items-center justify-between border-b border-[var(--border)] bg-[var(--surface)] px-5 py-4">
-        <div>
-          <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--subtle)]">
-            Execution truth
-          </div>
-          <div className="mt-1 text-sm font-semibold text-[var(--ink)]">
-            Conceptual boundaries, not Outbox filters
-          </div>
+    <Link
+      href={href}
+      className="group flex min-h-52 flex-col rounded-lg border border-[var(--border)] bg-white p-5 transition hover:-translate-y-0.5 hover:border-[var(--accent)] hover:shadow-[0_20px_50px_-36px_rgba(18,18,18,0.28)] motion-reduce:hover:translate-y-0"
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex h-10 w-10 items-center justify-center rounded bg-[var(--accent-soft)] text-[var(--accent)]">
+          <Icon aria-hidden="true" className="h-5 w-5" />
         </div>
-        <BookOpen aria-hidden="true" className="h-5 w-5 text-[var(--accent)]" />
+        <ArrowRight
+          aria-hidden="true"
+          className="h-4 w-4 text-[var(--subtle)] transition group-hover:translate-x-0.5 group-hover:text-[var(--accent)] motion-reduce:group-hover:translate-x-0"
+        />
       </div>
-      <ol className="divide-y divide-[var(--border)] px-5">
-        {states.map((state, index) => (
-          <li
-            key={state.label}
-            className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 py-4"
-          >
-            <span
-              className={[
-                "flex h-7 w-7 items-center justify-center rounded border font-mono text-xs font-semibold",
-                index === states.length - 1
-                  ? "border-[var(--accent)] bg-[var(--accent)] text-white"
-                  : "border-[var(--border)] bg-white text-[var(--muted)]",
-              ].join(" ")}
-            >
-              {index + 1}
-            </span>
-            <span className="min-w-0">
-              <span className="block text-sm font-semibold text-[var(--ink)]">
-                {state.label}
-              </span>
-              <span className="mt-0.5 block text-xs leading-5 text-[var(--muted)]">
-                {state.detail}
-              </span>
-            </span>
-            <span
-              className={[
-                "rounded px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.04em]",
-                index === states.length - 1
-                  ? "bg-[#eaf5ef] text-[var(--success)]"
-                  : "bg-[var(--paper-deep)] text-[var(--muted)]",
-              ].join(" ")}
-            >
-              {state.status}
-            </span>
-          </li>
-        ))}
-      </ol>
-    </div>
+      <div className="mt-5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
+        {label}
+      </div>
+      <h3 className="mt-2 text-lg font-semibold leading-6 text-[var(--ink)]">
+        {title}
+      </h3>
+      <p className="mt-2 flex-1 text-sm leading-6 text-[var(--muted)]">
+        {children}
+      </p>
+    </Link>
   );
 }
 
@@ -812,85 +968,5 @@ function ArticleListLink({
         className="mt-0.5 h-4 w-4 shrink-0 text-[var(--subtle)] transition group-hover:translate-x-0.5 group-hover:text-[var(--accent)] motion-reduce:group-hover:translate-x-0"
       />
     </Link>
-  );
-}
-
-function ArticleFeedback({
-  page,
-  collection,
-}: {
-  page: HelpArticle;
-  collection?: HelpCollection;
-}) {
-  const helpfulHref = `mailto:${supportEmail}?subject=${encodeURIComponent(
-    `Helpful Lemma guide: ${page.title}`,
-  )}&body=${encodeURIComponent(
-    `Guide: ${page.title}\nPath: ${page.url}\n\nThis guide helped me complete:`,
-  )}`;
-  const gapHref = `mailto:${supportEmail}?subject=${encodeURIComponent(
-    `Documentation gap: ${page.title}`,
-  )}&body=${encodeURIComponent(
-    `Guide: ${page.title}\nPath: ${page.url}\n\nI expected to find:\n\nWhat happened instead:`,
-  )}`;
-
-  return (
-    <section
-      aria-labelledby="article-feedback-title"
-      className="mt-8 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5"
-    >
-      <h2
-        id="article-feedback-title"
-        className="flex items-center gap-2 text-base font-semibold text-[var(--ink)]"
-      >
-        <CircleHelp aria-hidden="true" className="h-5 w-5 text-[var(--accent)]" />
-        Did this guide help?
-      </h2>
-      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-        Send a short note to Lemma support. Your email opens with this guide and
-        path already included.
-      </p>
-      <div className="mt-4 flex flex-wrap gap-3">
-        <TrackedAnchor
-          href={helpfulHref}
-          event="docs_feedback_click"
-          eventProps={{
-            cta_id: "docs_feedback_helpful",
-            cta_text: "Yes, it helped",
-            location: "article_feedback",
-            article_path: page.url,
-          }}
-          className="inline-flex min-h-10 items-center gap-2 rounded bg-[var(--accent)] px-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-        >
-          <ThumbsUp aria-hidden="true" className="h-4 w-4" />
-          Yes, it helped
-        </TrackedAnchor>
-        <TrackedAnchor
-          href={gapHref}
-          event="docs_feedback_click"
-          eventProps={{
-            cta_id: "docs_feedback_gap",
-            cta_text: "Report a gap",
-            location: "article_feedback",
-            article_path: page.url,
-          }}
-          className="inline-flex min-h-10 items-center gap-2 rounded border border-[var(--border)] bg-white px-3 text-sm font-semibold text-[var(--ink)] transition hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-        >
-          <MessageSquareWarning aria-hidden="true" className="h-4 w-4" />
-          Report a gap
-        </TrackedAnchor>
-      </div>
-      <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-[var(--border)] pt-4">
-        <span className="text-sm text-[var(--muted)]">Still looking?</span>
-        <HelpSearchButton compact />
-        {collection ? (
-          <Link
-            href={collection.url}
-            className="inline-flex min-h-10 items-center rounded border border-[var(--border)] bg-white px-3 text-sm font-semibold text-[var(--ink)] transition hover:border-[var(--accent)]"
-          >
-            Browse {collection.label}
-          </Link>
-        ) : null}
-      </div>
-    </section>
   );
 }

@@ -25,7 +25,7 @@ export default function NotFound() {
 
   return (
     <>
-      <HelpHeader collections={collections} />
+      <HelpHeader />
       <main
         id="main-content"
         tabIndex={-1}
@@ -39,7 +39,7 @@ export default function NotFound() {
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-8 text-[var(--muted)]">
           The address may be mistyped, or the guide may have moved. Search for
-          the task you were trying to complete, or return to the quickstart.
+          the task you were trying to complete, or return to Lemma 101.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <HelpSearchButton compact />
@@ -50,10 +50,10 @@ export default function NotFound() {
             Go to Help Center
           </Link>
           <Link
-            href="/start/quickstart"
+            href="/start/lemma-101"
             className="inline-flex min-h-11 items-center rounded border border-[var(--border)] bg-white px-4 text-sm font-semibold text-[var(--ink)] hover:border-[var(--accent)]"
           >
-            Open the quickstart
+            Start Lemma 101
           </Link>
         </div>
         <div className="mt-10 grid w-full gap-3 sm:grid-cols-3">

@@ -1,0 +1,60 @@
+---
+title: Verify the first outcome
+description: Read Sequence history and provider evidence without confusing prepared, approved, scheduled, and sent work.
+---
+
+Open the reviewed Sequence and expand **History and provider evidence**.
+
+<Outcome title="Outcome">
+You will identify the strongest available evidence for the first action and know whether to wait, resolve a problem, or treat it as provider-confirmed.
+</Outcome>
+
+## Read the four boundaries
+
+| State | What it proves | What it does not prove |
+| --- | --- | --- |
+| **Prepared** | Research or a Draft exists for review | Approval, scheduling, or delivery |
+| **Approved** | The relevant review boundary was accepted | That the action is queued or sent |
+| **Scheduled** | The action has an intended execution time | That LinkedIn accepted it |
+| **Provider-confirmed** | Provider evidence records the external action | A reply, interest, or business outcome |
+
+## Decide from the evidence
+
+<Steps>
+<Step>
+
+### If provider confirmation is present
+
+Treat the action as sent. Use the Sequence history for timing and external evidence, then monitor replies in Outbox.
+
+</Step>
+<Step>
+
+### If the action is scheduled
+
+Wait for the scheduled time and Sender conditions. Do not infer delivery from the schedule alone.
+
+</Step>
+<Step>
+
+### If a problem is shown
+
+Open **Outbox → Open → Problems**. Follow the available recovery action and preserve any provider evidence already recorded.
+
+</Step>
+<Step>
+
+### If the result is ambiguous
+
+Do not retry. Repeated attempts can duplicate an external action. Check the Sequence history again or use Lemma support when the evidence cannot establish the outcome.
+
+</Step>
+</Steps>
+
+<HelpCallout type="note" title="Evaluating without contacting anyone">
+Pause or hold the relevant work before the Sender and Sequence become eligible. A connected Sender can be Ready even when you do not intend to allow execution.
+</HelpCallout>
+
+## Your beginner loop is complete
+
+Use [Home](/start/home) for 30-day outcomes and current Outbox orientation. Use [Outbox](/outbox) for live work, replies, problems, and provider evidence.

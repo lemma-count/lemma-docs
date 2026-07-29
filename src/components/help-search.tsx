@@ -109,7 +109,7 @@ export function HelpSearchButton({
         className={compact ? "mr-2 h-4 w-4" : "mr-3 h-5 w-5"}
       />
       <span className="min-w-0 flex-1 truncate">
-        Search for a task, state, or setting
+        Search a task, problem, or “getting started”
       </span>
       {!compact ? (
         <span
@@ -268,7 +268,7 @@ export function HelpSearchDialog() {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Try “connect LinkedIn”, “Dry run”, or “reply”"
+              placeholder="Try “getting started”, “connect LinkedIn”, or “reply”"
               autoComplete="off"
               className="min-w-0 flex-1 bg-transparent py-3 text-base text-[var(--ink)] outline-none placeholder:text-[var(--subtle)]"
             />
@@ -350,14 +350,29 @@ export function HelpSearchDialog() {
                 No guide matches “{query.trim()}”.
               </p>
               <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-                Try a product term such as Sender, Leads, Mission, Cockpit, or
-                Outbox.
+                Start with the beginner path or browse recovery guidance.
               </p>
+              <div className="mt-4 flex flex-wrap justify-center gap-2">
+                <Link
+                  href="/start/lemma-101"
+                  className="inline-flex min-h-10 items-center rounded bg-[var(--accent)] px-3 text-sm font-semibold text-white"
+                  onClick={closeSearch}
+                >
+                  Start Lemma 101
+                </Link>
+                <Link
+                  href="/reference/troubleshooting"
+                  className="inline-flex min-h-10 items-center rounded border border-[var(--border)] bg-white px-3 text-sm font-semibold text-[var(--ink)]"
+                  onClick={closeSearch}
+                >
+                  Troubleshoot
+                </Link>
+              </div>
               <a
                 href={`mailto:${supportEmail}?subject=${encodeURIComponent(
                   `Missing Help Center guide: ${query.trim()}`,
                 )}`}
-                className="mt-3 inline-flex text-sm font-semibold text-[var(--accent)] underline underline-offset-4"
+                className="mt-4 inline-flex text-sm font-semibold text-[var(--accent)] underline underline-offset-4"
               >
                 Report missing guidance
               </a>

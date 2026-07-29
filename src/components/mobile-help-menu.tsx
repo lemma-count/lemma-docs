@@ -8,18 +8,17 @@ import { HelpSearchButton } from "@/components/help-search";
 import { TrackedAnchor } from "@/components/tracked-anchor";
 import { appUrl } from "@/lib/site";
 
-type MobileCollection = {
-  slug: string;
+type MobileHelpItem = {
+  id: string;
   title: string;
   url: string;
+  active: boolean;
 };
 
 export function MobileHelpMenu({
-  collections,
-  activeSlug,
+  items,
 }: {
-  collections: MobileCollection[];
-  activeSlug?: string;
+  items: MobileHelpItem[];
 }) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -145,25 +144,21 @@ export function MobileHelpMenu({
                 </div>
 
                 <div className="overflow-y-auto p-3">
-                  <nav className="grid gap-1" aria-label="Help collections">
-                    {collections.map((collection) => (
+                  <nav className="grid gap-1" aria-label="Primary help">
+                    {items.map((item) => (
                       <Link
-                        key={collection.slug}
-                        href={collection.url}
-                        aria-current={
-                          activeSlug === collection.slug
-                            ? "location"
-                            : undefined
-                        }
+                        key={item.id}
+                        href={item.url}
+                        aria-current={item.active ? "location" : undefined}
                         className={[
                           "rounded px-3 py-2.5 text-sm font-medium",
-                          activeSlug === collection.slug
+                          item.active
                             ? "bg-[var(--surface)] text-[var(--accent)]"
                             : "text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--ink)]",
                         ].join(" ")}
                         onClick={() => closeMenu(false)}
                       >
-                        {collection.title}
+                        {item.title}
                       </Link>
                     ))}
                   </nav>

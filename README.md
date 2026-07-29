@@ -9,8 +9,11 @@ The site is built with Next.js and Fumadocs. Its information architecture follow
 
 Start here
 /start
+/start/lemma-101
 /start/onboarding
 /start/quickstart
+/start/review-first-sequence
+/start/verify-first-outcome
 /start/home
 /start/what-is-lemma
 /start/core-concepts
@@ -33,7 +36,7 @@ Missions
 /missions/create-lemma-led
 /missions/build-manually
 /missions/research-and-drafts
-/missions/cockpit-and-controls
+/missions/mission-controls
 /missions/pause-hold-complete
 
 Outbox
@@ -81,7 +84,7 @@ The published guides describe the verified LinkedIn workflow:
 - distinguish configured targets from the Sender’s automatic warm-up and effective capacity;
 - add real Leads from LinkedIn or a spreadsheet;
 - create a bounded Mission and Sequence;
-- use the conversational Lemma-led Cockpit or operational Manual Cockpit;
+- use the Lemma-led conversation or the operational Manual Mission view;
 - review prepared work and provider evidence in Outbox;
 - distinguish Draft, approved, scheduled, running, blocked, failed, and provider-confirmed states;
 - store Operator and offer dossiers without promising downstream reuse that is not wired;

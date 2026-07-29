@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { Step, Steps } from "fumadocs-ui/components/steps";
 import type { MDXComponents } from "mdx/types";
@@ -303,14 +304,14 @@ function ProductScreenshot({
         aria-label={`Open full-size screenshot: ${alt}`}
         className="block bg-white focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--accent)]"
       >
-        <img
+        <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
           className="block h-auto w-full"
+          sizes="(min-width: 1024px) 760px, 100vw"
           loading="lazy"
-          decoding="async"
         />
       </a>
       <figcaption className="flex flex-col gap-2 border-t border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm leading-6 text-[var(--muted)] sm:flex-row sm:items-start sm:justify-between">

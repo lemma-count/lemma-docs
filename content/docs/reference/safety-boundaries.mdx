@@ -30,7 +30,7 @@ Approval describes permission for a specific scope. It does not override the Sen
 
 ### Lemma-led
 
-**Review approval** and **Auto approval** live in Cockpit. Auto approval applies only to future LinkedIn Sequences; existing decisions do not change.
+**Review approval** and **Auto approval** are Lemma-led Mission controls. Auto approval applies only to future LinkedIn Sequences; existing decisions do not change.
 
 Eligible Lemma-authored Sequences also have a pre-send review boundary in **Outbox → Open**. Editing, adding, or deleting changes the active revision. Rescheduling one eligible touch re-anchors the eligible pre-send chain, while priority applies Sequence-wide to eligible pre-send tasks. **Validate sequence** or **Batch validate** approves and freezes the current message bodies. Sent, provider-confirmed, or otherwise locked touches cannot be rewritten through this editor.
 
@@ -44,7 +44,7 @@ Neither path overrides Sender readiness, schedule, daily targets, Do not contact
 
 - **Stop Sequence** affects one future Manual cold Sequence.
 - **Pause Manual Mission** affects Manual sending for one Mission.
-- **Hold all manual sending** affects Manual work across the workspace, not Lemma-led work.
+- **Hold all manual sending** affects all Manual work, not Lemma-led work.
 - **Hold LinkedIn** affects provider-side LinkedIn work for one Lemma-led Mission while Lemma can keep preparing.
 - Sender **Pause** affects eligible work through that LinkedIn account.
 - **Complete Mission** applies to one Lemma-led Mission: it cancels eligible unclaimed work but lets already-sending work settle.

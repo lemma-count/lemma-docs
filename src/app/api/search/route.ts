@@ -41,6 +41,14 @@ const sequenceReviewPattern =
   /\b(validate|validation|batch|edit|editing|reschedule|prioriti[sz]e|add|remove|delete)\b.*\b(sequence|touch|message)\b|\b(sequence|touch|message)\b.*\b(validate|validation|edit|reschedule|prioriti[sz]e|add|remove|delete)\b/i;
 
 const queryExpansions: Array<[RegExp, string]> = [
+  [
+    /\b(getting started|how (?:do|can) i start|beginner|new to lemma|commencer|d[eé]marrer|d[eé]butant)\b/i,
+    "Lemma 101 beginner start first setup",
+  ],
+  [
+    /\b(first|premi[eè]re?)\b.*\b(mission|campaign|outreach)\b|\b(mission|campaign|outreach)\b.*\b(first|premi[eè]re?)\b/i,
+    "prepare first Mission quickstart",
+  ],
   [/\b(error|errors|broken|failure|failed)\b/i, "troubleshooting problem recovery"],
   [/\b(csv|spreadsheet|xlsx)\b/i, "spreadsheet import leads file"],
   [
@@ -57,6 +65,14 @@ const queryExpansions: Array<[RegExp, string]> = [
 ];
 
 const curatedDestinations: Array<[RegExp, string]> = [
+  [
+    /\b(getting started|how (?:do|can) i start|beginner|new to lemma|commencer|d[eé]marrer|d[eé]butant)\b/i,
+    "/start/lemma-101",
+  ],
+  [
+    /\b(first|premi[eè]re?)\b.*\b(mission|campaign|outreach)\b|\b(mission|campaign|outreach)\b.*\b(first|premi[eè]re?)\b/i,
+    "/start/quickstart",
+  ],
   [/\b(connect|connection)\b.*\b(linkedin|sender)\b/i, "/sender/connect-and-activate"],
   [/\b(pause|reconnect|replace)\b.*\bsender\b/i, "/sender/pause-reconnect-replace"],
   [/\b(error|errors|broken|failure|failed|troubleshoot)\b/i, "/reference/troubleshooting"],

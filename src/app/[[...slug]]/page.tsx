@@ -17,6 +17,7 @@ import { siteName } from "@/lib/site";
 
 const retiredRouteRedirects: Record<string, string> = {
   "/create": "/missions/create-lemma-led",
+  "/missions/cockpit-and-controls": "/missions/mission-controls",
   "/start/how-studies-work": "/start/core-concepts",
   "/start/navigate-lemma": "/start/core-concepts",
 };
@@ -50,12 +51,11 @@ export default async function Page(props: {
   const articles = getHelpArticles();
   const collections = getHelpCollections(articles);
   const collection = getCollectionForUrl(collections, page.url);
-  const activeSlug = collection?.slug;
 
   if (page.url === "/") {
     return (
       <>
-        <HelpHeader collections={collections} />
+        <HelpHeader activeUrl="/" />
         <HelpHome
           collections={collections}
           popularArticles={getPopularArticles(articles)}
@@ -75,7 +75,7 @@ export default async function Page(props: {
 
   return (
     <>
-      <HelpHeader collections={collections} activeSlug={activeSlug} />
+      <HelpHeader activeUrl={page.url} />
       <HelpArticleShell
         page={article}
         collection={collection}
