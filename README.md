@@ -73,7 +73,7 @@ Set `NEXT_PUBLIC_SITE_URL` to the deployed origin used for metadata, robots, and
 
 ## Brand system
 
-The interface follows the approved Lemma brand kit v2.0.0, **Sunrise Threshold**: a flat orthogonal doorway framing a Signal-orange half-sun on the horizon, with Paper and Ink fields, Inter Tight, Sometype Mono, and sharp control geometry. Superseded perspective marks, coastal imagery, and the serif layer are intentionally excluded.
+The interface follows the approved Lemma brand kit v2.1.0, **Sunrise Threshold**: a flat orthogonal doorway framing a Signal-orange half-sun on the horizon, with Paper and Ink fields, Inter Tight, Sometype Mono, and sharp control geometry. Superseded perspective marks, coastal imagery, and the serif layer are intentionally excluded.
 
 ## Product truth
 
