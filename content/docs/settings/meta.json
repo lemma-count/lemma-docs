@@ -1,0 +1,5 @@
+{
+  "title": "Connect & configure",
+  "defaultOpen": true,
+  "pages": ["index", "connect-linkedin", "linkedin-access", "schedule-capacity", "recover-sender", "sender-profile", "calendar", "candidate-resources", "candidate-systems", "tools", "workspace", "account"]
+}

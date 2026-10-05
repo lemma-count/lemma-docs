@@ -1,0 +1,36 @@
+---
+title: Connect tools for conversations
+description: Make external context and tools available to Speiros through authorized connectors.
+---
+
+The **Eve tools** section connects services Speiros can use during conversations. A connector being listed or saved does not prove that authorization or an external action succeeded.
+
+## Before you start
+
+Have the provider account and permission to grant access. For a custom connector, obtain its MCP server URL and authentication requirements from the provider.
+
+## Connect a listed tool
+
+1. Open [Settings → Integrations](https://app.speiros.com/settings/integrations) and find **Eve tools**.
+2. Find the service, read its description, and choose its connection control.
+3. Review the connector settings and **Provider setup details** if needed, then choose **Connect**.
+4. When an OAuth connector is first used by Eve, complete the requested sign-in and authorization.
+5. Check the connector state. **Ready to connect** describes an available option, rather than an established connection.
+
+Services listed here include Apollo, Notion, Google Workspace, Slack, Linear, Airtable, Intercom, PostHog, and GitHub. Access remains limited to the connection and permissions actually granted.
+
+## Add a custom connector
+
+Choose **Add custom connector**, enter **Name**, choose **Authentication** (**No authentication (public)** or **OAuth**), and enter **MCP server URL**. The URL must use HTTP(S), be publicly reachable, and contain no credentials. Choose **Connect** and check the result.
+
+Public connectors are discovered immediately; OAuth connectors request sign-in when Eve first uses them. Saving a URL does not establish access to private data.
+
+## Recover or disconnect
+
+Read a connector's status and displayed error. Use **Refresh** for a listed connector when offered, and complete any requested authorization. If discovery or authorization keeps failing, check the provider's setup details or [contact Support](/help/support).
+
+**Disconnect** removes the connector and its saved access grants from Speiros. You may also need to revoke access in the provider's own settings.
+
+These tools give Speiros access to other services. Authorizing an external AI agent to act inside Speiros is a separate workflow in **Settings → Developers**.
+
+Next, [start a candidate search](/candidates/search) and state what context you want Speiros to use.

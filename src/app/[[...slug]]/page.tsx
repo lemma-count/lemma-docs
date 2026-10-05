@@ -12,20 +12,8 @@ import {
 import { source } from "@/lib/source";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
-import { notFound, permanentRedirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { siteName } from "@/lib/site";
-
-const retiredRouteRedirects: Record<string, string> = {
-  "/create": "/missions/create-lemma-led",
-  "/missions/cockpit-and-controls": "/missions/mission-controls",
-  "/start/how-studies-work": "/start/core-concepts",
-  "/start/navigate-lemma": "/start/core-concepts",
-};
-
-function getRetiredDestination(slugs?: string[]) {
-  if (!slugs || slugs.length === 0) return null;
-  return retiredRouteRedirects[`/${slugs.join("/")}`] ?? null;
-}
 
 function getHelpArticles(): HelpArticle[] {
   return source
@@ -44,8 +32,6 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  const retiredDestination = getRetiredDestination(params.slug);
-  if (!page && retiredDestination) permanentRedirect(retiredDestination);
   if (!page) notFound();
 
   const articles = getHelpArticles();
@@ -101,19 +87,6 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  const retiredDestination = getRetiredDestination(params.slug);
-  if (!page && retiredDestination) {
-    return {
-      title: {
-        absolute: siteName,
-      },
-      description:
-        "Practical guidance for researched, reviewable, operator-controlled outbound with Lemma.",
-      alternates: {
-        canonical: retiredDestination,
-      },
-    };
-  }
   if (!page) notFound();
 
   return {
@@ -134,10 +107,10 @@ export async function generateMetadata(props: {
       url: page.url,
       images: [
         {
-          url: "/og.png",
+          url: "/opengraph-image",
           width: 1200,
           height: 630,
-          alt: "Lemma Help Center — One clear next step for every outbound job.",
+          alt: "Speiros Help Center — One clear next step for your recruiting work.",
         },
       ],
     },
@@ -145,7 +118,7 @@ export async function generateMetadata(props: {
       card: "summary_large_image",
       title: page.url === "/" ? siteName : page.data.title,
       description: page.data.description,
-      images: ["/og.png"],
+      images: ["/opengraph-image"],
     },
   };
 }

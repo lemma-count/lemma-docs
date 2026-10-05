@@ -1,0 +1,42 @@
+---
+title: Connect candidate systems — Beta
+description: Connect a candidate system, check its import state, and understand synced lists.
+---
+
+**ATS and candidate system integrations are in beta.** The displayed provider's controls and health state determine what is available. Do not assume every integration supports the same import, sync, or writeback actions.
+
+## Before you start
+
+Have access to the provider account and permission to authorize it. Check the active workspace and allow pop-ups: connection opens in a separate tab.
+
+## Connect and check the import
+
+1. Open [Settings → Integrations](https://app.speiros.com/settings/integrations).
+2. In **ATS & candidate systems**, choose the **Connect** button for your provider and authorize the account in the new tab.
+3. Return and read the provider's status, summary, and any reconnect reason.
+4. Check **Last successful initial import** and the other sync or health timestamps when displayed. Authorization alone does not prove that import succeeded.
+5. If offered, use **Start initial import** or **Retry initial import**, then recheck the import result.
+6. Under **Synced candidate lists**, choose **View candidates** to inspect what was actually imported.
+
+## Provider differences
+
+| Provider | Controls to look for |
+| --- | --- |
+| **HubSpot** | Optional **Enrich imported candidates with LinkedIn data after the HubSpot import** before connection; **Candidate fields** for an active connection; initial-import start/retry and reconnection. |
+| **Pipedrive** | Initial-import start/retry and reconnection when offered by the current state. |
+| **Attio** | Initial-import recovery and reconnection; a recovery operation may start a repair scan. |
+| **Zoho CRM** | A connection card is offered. Do not assume the same import recovery or field controls as the other providers; check its current state or contact Support. |
+
+## Understand synced lists
+
+Speiros keeps synced candidate lists up to date, while Missions keep the candidates selected at launch. New members of a synced list are not automatically added to an already launched Mission.
+
+Disconnecting a system leaves existing candidates and Mission cohorts unchanged. Read the confirmation before using a provider's **Disconnect** control.
+
+## If connection or import fails
+
+If the new tab does not open, allow pop-ups and start connection again. For authentication problems, use the provider's **Reconnect** control when shown. For import failure, read the reason and use the offered retry control rather than repeatedly reconnecting.
+
+Use **Contact Support** on the beta banner or [contact Support](/help/support) with the provider, visible state, and last successful import time. This is also the route for requesting another recruiting system.
+
+Next, [organize candidate lists](/candidates/lists) before [preparing a Mission](/work/prepare-mission).

@@ -1,24 +1,25 @@
-# Lemma Outbound Product Map
+# Speiros Help Center product map
 
-Updated: 2026-07-26
+Updated: 2026-10-05. Source authority: `wilu-web origin/main` at `162f6b07b8bf1011e8f231d0c077a4db4ae82d03`.
 
-| Area | Shipped user job | Verified behavior | Primary docs |
+This map replaces the July outbound assumptions. Code evidence and live observations have different scopes; see the section writing ledgers and `speiros-audit-evidence-2026-10-05.md` for exact paths and remaining operational checks.
+
+| Reader job | Documentation | Product surface | Evidence scope |
 | --- | --- | --- | --- |
-| Activation | Complete the first controlled outbound loop | Connect LinkedIn Sender → verify healthy Connect/Replace becomes Ready → add real Leads → create Mission → review intended work → verify provider-confirmed first send | `/start/quickstart` |
-| Sender | Establish a controlled LinkedIn execution account | Connect, exceptional Dry run activation, schedule, automatic effective-capacity warm-up, pause, resume, reconnect, replace; Dry run / Ready / Paused / Restricted / Unavailable | `/sender` |
-| Leads | Add and preserve a legitimate audience | LinkedIn search, Sales Navigator search, profile URL, spreadsheet mapping, Lists, duplicates, eligibility, Do not contact | `/leads` |
-| Missions | Convert an outcome into bounded work | Lemma-led conversational Cockpit; Manual operational Cockpit; Review/Auto approval where applicable; pause/hold/stop/complete; Current/Archived; overview and performance | `/missions` |
-| Mission and Lead context | Inspect the goal and supportable context | Mission inspector readiness, Objectives, Lead work cards; Mission Goal/ICP/contract/recent intelligence; Lead field provenance | `/missions/research-and-drafts` |
-| Outbox | Review and understand execution truth | Sequence per Lead/Mission, content and timing review, Open / Needs you / Finished, readiness and problem states, provider evidence | `/outbox` |
-| Replies | Act on inbound outcomes | Reply context in Outbox/Lead state; suggested replies remain Drafts; no primary standalone Inbox | `/outbox/handle-replies` |
-| Workspace context | Store Operator and offer facts | About me and About offer are editable workspace dossiers; automatic Mission/drafting reuse is not currently promised | `/reference/about-me`, `/reference/about-offer` |
-| Access | Move between bounded workspaces | One full-access Operator role; switch or create accessible workspaces; no live teammate-administration flow | `/reference/roles-and-access` |
-| Safety | Keep external work inside real boundaries | Sender readiness, ramped effective capacity, schedule, Do not contact, duplicate risk, provider restrictions, duplicate-safe recovery | `/reference/safety-boundaries` |
+| Understand the workflow and first setup | `/start` | Welcome / LinkedIn / Your company; Start recruiting | Navigation/dialog live; setup writes source verified |
+| Prepare company and role context | `/recruiting` | Recruiting context, Roles | Context UI live; publication and role lifecycle source verified |
+| Research and select candidates | `/candidates` | Recruiting conversation in Work; Candidates imports/lists | Entry live; searches/imports/moves source verified |
+| Supervise decisions and execution | `/work` | Needs you, Sending plan, Mission cockpit | Work navigation live; approvals/sending/replies source verified |
+| Connect and configure accounts/tools | `/settings` | Sender, calendar, resources, Integrations, workspace/account | Sender/Integrations UI live; connection/invitation/checkout operations source verified |
+| Resolve a problem | `/help` | Status/evidence, DNC, Audit log, Support | Controls and state semantics source verified |
 
-## Public claim boundary
+## Claim boundaries
 
-Document LinkedIn execution only. Do not claim automatic Lead sourcing, CRM writes, detailed email execution, teammate administration, integrations, unsupported channels, automatic dossier reuse, outcome benchmarks, or guaranteed replies, meetings, revenue, qualification, deliverability, compliance, or platform safety.
-
-## Transitional language
-
-New docs use Mission, Lead, Cockpit, Outbox, Sender, and Sequence. Internal identifiers and older container nouns are implementation evidence, not public concepts.
+- Import, list membership, cohort confirmation, approval, and provider evidence are distinct stages.
+- Searching without a role is allowed; preparing a Mission requires an open role, an active static list, and a connected LinkedIn Sender.
+- Channel connection is distinct from mission authorization and execution readiness. Current channel availability is not inferred solely from a selectable option or database task type.
+- ATS/candidate system integrations are Beta and provider controls differ. A curated tool entry is an option, not a granted permission.
+- Replies use the receiving account and conversation. DNC is global across outreach channels and missions; Undo does not re-arm work.
+- Open-role capacity is distinct from workspace access roles. Public prices are not hardcoded into guides.
+- Voice Agents remains a separate Beta outside this delivery; developer API/external-agent guides are a later advanced collection.
+- A measured click, approval, calendar connection, or sent booking link is not proof of an interview or hire.

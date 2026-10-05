@@ -1,0 +1,38 @@
+---
+title: Understand timezones
+description: Compare Sender schedules, booking settings, and displayed timestamps correctly.
+---
+
+Speiros does not display every timestamp in one timezone. Check the setting or label on the screen you are using before comparing times.
+
+## Before you begin
+
+Identify whether you are checking a sending window, booking availability, a conversation, or an execution event. An estimated send time remains approximate regardless of timezone.
+
+## Check the relevant clock
+
+| Surface | Timezone used |
+| --- | --- |
+| **Settings → Sender → Sending schedule** | The Sender’s **Timezone** field governs its configured sending window. |
+| Sender status and next-eligible timestamps | The Sender’s schedule timezone. |
+| **Meeting calendar → Booking settings** | Its own **Timezone** field for booking settings. |
+| Reply messages and scheduled/sent reply times | The receiving Sender’s schedule timezone. |
+| Sequence **Execution diagnostics** and **Durable history** | Currently **Europe/Paris**, explicitly labeled in diagnostics. |
+| **Audit log** and Candidate activity feed timestamps | **UTC** in the absolute feed timestamp. |
+
+## Check or change a setting
+
+1. In **Settings → Sender**, inspect the sending **Start**, **End**, active days, and **Timezone**.
+2. If those settings need correction, use a named timezone such as `Europe/Paris`, then choose **Save sender settings**.
+3. Separately inspect **Booking settings → Timezone** and its availability window. Use **Save booking settings** for a booking change.
+4. Return to the affected work and read the timestamp label again.
+
+Changing a sending schedule does not establish that a message was sent at the displayed estimate. Booking settings do not replace the Sender’s sending schedule.
+
+## If times appear inconsistent
+
+Compare the same event with its timezone included. Named zones can have seasonal clock changes, so do not assume Europe/Paris always has one fixed offset from UTC. For an unresolved discrepancy, share the event, displayed time, and both timezone settings with [Support](/help/support).
+
+## Next
+
+[Read Sending plan](/work/sending-plan) or [configure schedule and capacity](/settings/schedule-capacity).

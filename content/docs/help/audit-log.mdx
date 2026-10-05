@@ -1,0 +1,34 @@
+---
+title: Read Audit log
+description: Find recorded operator controls and provider-confirmed LinkedIn actions.
+---
+
+**Settings → Audit log** records supported workspace control changes and provider-confirmed LinkedIn actions. Use it alongside the candidate’s sequence history, not as a complete transcript of every provider interaction.
+
+## Before you begin
+
+You need access to the correct workspace. To narrow a record, use the exact Mission or candidate identifier when you have it; the filter fields currently say **Mission ID** and **Lead ID**.
+
+## Find an event
+
+1. Open **Settings → Audit log**.
+2. Choose an **Action**, or leave **All actions** selected.
+3. Optionally enter **Mission ID** or **Lead ID**, and select **From** and **To** dates. The end date must be on or after the start date.
+4. Click **Apply filters**. Use **Clear** to remove the filters.
+5. Read the event’s action, actor, summary, timestamp, and linked references. Use **Load 50 more** when offered.
+
+Supported action labels include Sender changes, sending-window and limits changes, Do Not Contact changes, Mission lifecycle and approval-mode changes, and confirmed LinkedIn invitations, messages, and withdrawals.
+
+## Read the evidence grade
+
+**Control committed** records a completed control change. **Provider confirmed** records the confirmed external action represented by that event. A committed approval-mode change is not proof of a message send.
+
+Feed timestamps display UTC. Open the linked Mission or candidate when you need the exact sequence context, and compare the timezone when reading its diagnostics.
+
+## If history is unavailable
+
+Choose **Retry**. If the screen says it is showing the last verified audit page, treat it as stale; loading more is disabled until refresh succeeds. **No matching audit events** applies to a fresh filtered result, not a failed load. Broaden the filters before concluding the event is absent.
+
+## Next
+
+[Read Sending plan](/work/sending-plan), or [contact Support](/help/support) with the relevant event and references.

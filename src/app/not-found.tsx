@@ -39,7 +39,7 @@ export default function NotFound() {
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-8 text-[var(--muted)]">
           The address may be mistyped, or the guide may have moved. Search for
-          the task you were trying to complete, or return to Lemma 101.
+          the task you were trying to complete, or start with Speiros.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <HelpSearchButton compact />
@@ -50,10 +50,10 @@ export default function NotFound() {
             Go to Help Center
           </Link>
           <Link
-            href="/start/lemma-101"
+            href="/start/overview"
             className="inline-flex min-h-11 items-center rounded border border-[var(--border)] bg-white px-4 text-sm font-semibold text-[var(--ink)] hover:border-[var(--accent)]"
           >
-            Start Lemma 101
+            Start with Speiros
           </Link>
         </div>
         <div className="mt-10 grid w-full gap-3 sm:grid-cols-3">

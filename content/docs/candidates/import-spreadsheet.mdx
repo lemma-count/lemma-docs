@@ -1,0 +1,33 @@
+---
+title: Import a spreadsheet
+description: Map columns, review rows and merge conflicts, then import the candidates you chose.
+---
+
+The spreadsheet importer accepts CSV, TSV, XLSX, XLS, XLSB, and ODS files. It suggests column mappings, lets you review the rows, and merges matches with existing candidates.
+
+## Before you start
+
+Prepare one row per person, with a valid email address or LinkedIn profile URL wherever possible. A company page or search URL does not identify a candidate. Know whether your file should fill missing values or replace existing non-identity values.
+
+## Review and import
+
+1. Open **Candidates → Add candidates** and choose **Upload CSV** in **Import candidates**.
+2. Choose a destination list if offered, or **Candidates only — no list**.
+3. Upload the file. If it contains several sheets, select the relevant sheet.
+4. Review the suggested mapping. Match columns to the intended candidate fields or attributes and skip columns you do not need.
+5. Review the grid, correct values, and deselect rows you do not want. Changes stay local until you confirm the import.
+6. Check **Merge preview**: matches by email or LinkedIn, rows without identity, invalid values, duplicates, and existing candidate matches.
+7. Under **When a candidate already exists**, choose **Preserve existing values** to fill blanks, or **Overwrite existing values** for conflicting non-identity data you intend to replace. Email and LinkedIn identities are filled in rather than replaced.
+8. Review the optional enrichment choice and select **Import** with the displayed row count.
+
+## Check the result
+
+Read the completion counts: created, updated, skipped, and errors. File duplicates can merge into one candidate, and rows without a usable identity are skipped. Inspect a few imported profiles and their list membership before using the whole set.
+
+## Recover an incomplete import
+
+Use **Retry upload** if staging was interrupted. For invalid identity values, correct the file or review grid before committing.
+
+If candidates were saved but adding them to the destination list failed, use **Retry adding imported candidates to the list**. This repairs list routing without requiring a second candidate import. Resolve row errors from the completion report rather than assuming every uploaded row succeeded.
+
+Continue with [review a candidate](/candidates/review-profile) or [organize lists](/candidates/lists).

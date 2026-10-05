@@ -12,13 +12,13 @@
 }
 
 :root {
-  --paper: #fcfcfc;
+  --paper: #fffefb;
   --ink: #121212;
-  --accent: #002fa7;
-  --accent-hover: #1b46c7;
-  --accent-strong: #00247f;
-  --accent-soft: #eef2ff;
-  --signal: #ff7a45;
+  --accent: #123b57;
+  --accent-hover: #1c506f;
+  --accent-strong: #123b57;
+  --accent-soft: #f0f5f2;
+  --signal: #f2b58c;
   --body: #3d3d3d;
   --muted: #707070;
   --subtle: #707070;

@@ -1,0 +1,13 @@
+{
+  "title": "Find and select candidates",
+  "pages": [
+    "index",
+    "search",
+    "linkedin-products",
+    "review-profile",
+    "import-linkedin",
+    "import-spreadsheet",
+    "lists",
+    "confirm-selection"
+  ]
+}

@@ -1,0 +1,30 @@
+---
+title: Set sending hours and spacing
+description: Choose when a Sender may send and understand limits that can delay work.
+---
+
+A sending window permits work during certain hours. It does not guarantee that an approved action will send immediately: account readiness, permissions, capacity, and provider availability still apply.
+
+## Before you start
+
+Have a connected Sender with a current verified state. Check its identity and timezone.
+
+## Set the schedule
+
+1. Open [Settings → Sender](https://app.speiros.com/settings/channels) and select the account's channel.
+2. In **Sending schedule**, choose **Active days**, **Start**, **End**, and **Timezone**.
+3. Under **Send spacing**, set **Minimum gap (min)**, **Minimum extra delay (min)**, and **Maximum extra delay (min)**.
+4. Review **Resulting delay**. Speiros adds a random extra delay within that range to the minimum gap.
+5. Choose **Save sender settings** and confirm the save succeeds.
+
+Choose at least one day and an end time later than the start. Spacing values must be whole non-negative minutes, with the minimum extra delay no greater than the maximum. The smallest resulting gap must be at least one minute.
+
+## Check the result
+
+The saved window and spacing govern eligible future sends for this Sender. **Ready** means execution is enabled, not that every action is currently eligible. Read the execution reason, bottleneck, and next eligible time when shown. For LinkedIn, the displayed invitation budget and note allowance can impose additional limits.
+
+## If settings cannot be saved
+
+Correct the validation message. If controls are read-only because the state is stale, choose **Retry** before editing. A schedule change does not repair a disconnected or restricted account; follow [Sender recovery](/settings/recover-sender).
+
+For work waiting despite a valid schedule, [inspect Sending plan](/work/sending-plan). See [timezones](/help/timezones) when local times differ from your expectations.
