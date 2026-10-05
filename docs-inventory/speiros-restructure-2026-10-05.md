@@ -1,12 +1,12 @@
-# Proposition de refonte du Help Center Speiros
+# Plan de refonte du Help Center Speiros
 
-Date : 5 octobre 2026. Statut : proposition à examiner avant rédaction et publication.
+Date : 5 octobre 2026. Statut : structure approuvée et implémentée dans la PR #7 ; publication non effectuée. Les vérifications et limites sont consignées dans `release-validation-2026-10-05.md`.
 
 ## Objectif
 
 Conserver la présentation du Help Center, mais organiser les guides autour du parcours de recrutement actuel : préparer le contexte, choisir un rôle, rechercher et sélectionner des candidats, préparer une mission, superviser les actions et reprendre les conversations.
 
-Cette proposition ne modifie ni les pages publiques ni leur navigation. Le site existant reste consultable sur `https://docs.heylemma.com`. Le menu de l'application mène aujourd'hui à « How it works » sur `https://speiros.com/how-it-works` ; rétablir un accès Documentation sera une livraison distincte dans le dépôt produit.
+Le plan ci-dessous a guidé la réécriture des pages et de leur navigation dans une prévisualisation. Le site publié reste consultable sur `https://docs.heylemma.com`. Le retour du lien Documentation est préparé séparément dans la PR produit #2373, à livrer après la documentation.
 
 ## Sources et limites de vérification
 
