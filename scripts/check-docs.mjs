@@ -94,6 +94,24 @@ for (const page of pages) {
   }
 }
 
+const legacyRedirects = JSON.parse(
+  await readFile(path.join(projectRoot, "legacy-redirects.json"), "utf8"),
+);
+for (const [source, destination] of Object.entries(legacyRedirects)) {
+  if (!source.startsWith("/") || !destination.startsWith("/")) {
+    failures.push(`legacy-redirects.json: non-local migration ${source} → ${destination}`);
+  }
+  if (routes.has(source)) {
+    failures.push(`legacy-redirects.json: redirects a published page ${source}`);
+  }
+  if (!routes.has(destination)) {
+    failures.push(`legacy-redirects.json: ${source} targets missing page ${destination}`);
+  }
+  if (source === destination || Object.hasOwn(legacyRedirects, destination)) {
+    failures.push(`legacy-redirects.json: chain or loop ${source} → ${destination}`);
+  }
+}
+
 for (const page of pages) {
   const label = path.relative(projectRoot, page.file);
 
@@ -170,6 +188,17 @@ const codeFiles = (await walk(path.join(projectRoot, "src"))).filter(
   (file) => /\.(?:ts|tsx|js|mjs)$/.test(file),
 );
 const projectDocs = [path.join(projectRoot, "README.md")];
+for (const file of codeFiles) {
+  const contents = await readFile(file, "utf8");
+  for (const match of contents.matchAll(/\bhref\s*=\s*["'](\/[^"']+)["']/g)) {
+    const target = match[1];
+    const route = target.split(/[?#]/, 1)[0];
+    if (route.startsWith("//")) continue;
+    if (!routes.has(route)) {
+      failures.push(`${path.relative(projectRoot, file)}: UI link targets missing page ${target}`);
+    }
+  }
+}
 for (const file of [...sourceFiles, ...codeFiles, ...projectDocs]) {
   const contents = await readFile(file, "utf8");
   if (contents.includes("docs.halema.com")) {
@@ -186,5 +215,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  `Documentation integrity check passed: ${pages.length} pages, ${routes.size} routes.`,
+  `Documentation integrity check passed: ${pages.length} pages, ${routes.size} routes, ${Object.keys(legacyRedirects).length} permanent redirects.`,
 );

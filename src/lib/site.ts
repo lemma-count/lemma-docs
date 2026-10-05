@@ -3,10 +3,7 @@ const configuredSiteUrl =
 
 export const siteUrl = configuredSiteUrl.replace(/\/+$/, "");
 
-export const siteName = "Lemma Help Center";
+export const siteName = "Speiros Help Center";
 
 export const appUrl =
-  process.env.NEXT_PUBLIC_APP_URL ?? "https://app.heylemma.com";
-
-export const supportEmail =
-  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "support@heylemma.com";
+  process.env.NEXT_PUBLIC_APP_URL ?? "https://app.speiros.com";

@@ -13,13 +13,11 @@ export const metadata: Metadata = {
     template: `%s | ${siteName}`,
   },
   description:
-    "Practical guidance for connecting a Sender, adding Leads, creating Missions, reviewing Sequences, and running controlled LinkedIn outreach with Lemma.",
+    "Practical guides to prepare roles, find and select candidates, supervise recruiting work, and configure Speiros.",
   icons: {
     icon: [
-      { url: "/favicon.svg?v=2.0.1", type: "image/svg+xml" },
-      { url: "/favicon.ico?v=2.0.1", sizes: "any" },
+      { url: "/speiros-mark.svg?v=1", type: "image/svg+xml" },
     ],
-    apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
   metadataBase: new URL(siteUrl),
@@ -28,13 +26,13 @@ export const metadata: Metadata = {
     siteName,
     title: siteName,
     description:
-      "Run outbound with clarity—from a connected Sender and the right Leads to reviewable work and visible next actions.",
+      "Recruit with clear context, selected candidates, reviewed outreach, and visible next actions.",
     images: [
       {
-        url: "/og.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Lemma Help Center — One clear next step for every outbound job.",
+        alt: "Speiros Help Center — One clear next step for your recruiting work.",
       },
     ],
   },
@@ -42,8 +40,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteName,
     description:
-      "Run outbound with clarity—from a connected Sender and the right Leads to reviewable work and visible next actions.",
-    images: ["/og.png"],
+      "Recruit with clear context, selected candidates, reviewed outreach, and visible next actions.",
+    images: ["/opengraph-image"],
   },
 };
 

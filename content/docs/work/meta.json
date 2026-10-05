@@ -1,0 +1,17 @@
+{
+  "title": "Supervise work",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "prepare-mission",
+    "mission-controls",
+    "review-drafts",
+    "approve-sequence",
+    "sending-plan",
+    "needs-you",
+    "replies",
+    "candidate-activity",
+    "lifecycle",
+    "existing-manual-missions"
+  ]
+}

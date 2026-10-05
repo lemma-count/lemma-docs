@@ -1,0 +1,14 @@
+{
+  "title": "Resolve a problem",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "statuses",
+    "search-import",
+    "sequence",
+    "do-not-contact",
+    "timezones",
+    "audit-log",
+    "support"
+  ]
+}

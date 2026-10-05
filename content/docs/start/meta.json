@@ -1,15 +1,11 @@
 {
   "title": "Start here",
-  "defaultOpen": true,
   "pages": [
     "index",
-    "lemma-101",
+    "overview",
+    "navigation",
+    "concepts",
     "onboarding",
-    "quickstart",
-    "review-first-sequence",
-    "verify-first-outcome",
-    "home",
-    "what-is-lemma",
-    "core-concepts"
+    "first-recruitment"
   ]
 }

@@ -1,104 +1,37 @@
-# Lemma Help Center
+# Speiros Help Center
 
-Business-facing product documentation for Lemma’s professional outbound workflow.
+Task-oriented documentation for the current recruiting product. The Help Center keeps the existing search-first home, collection navigation, breadcrumbs, table of contents, and article progression.
 
-The site is built with Next.js and Fumadocs. Its information architecture follows the work an Operator needs to complete:
+## Structure
 
-```txt
-/
+52 canonical pages across six collections:
 
-Start here
-/start
-/start/lemma-101
-/start/onboarding
-/start/quickstart
-/start/review-first-sequence
-/start/verify-first-outcome
-/start/home
-/start/what-is-lemma
-/start/core-concepts
+- `/start` — understand Speiros and complete a first recruitment.
+- `/recruiting` — prepare company context and create or manage roles.
+- `/candidates` — search, import, review, and confirm candidates.
+- `/work` — supervise preparation, approve sequences, follow sending and replies.
+- `/settings` — connect accounts and configure the workspace.
+- `/help` — understand states and resolve problems.
 
-Sender
-/sender
-/sender/connect-and-activate
-/sender/readiness-and-schedule
-/sender/pause-reconnect-replace
-
-Leads
-/leads
-/leads/import-from-linkedin
-/leads/import-spreadsheet
-/leads/create-manage-lists
-/leads/organize-and-protect
-
-Missions
-/missions
-/missions/create-lemma-led
-/missions/build-manually
-/missions/research-and-drafts
-/missions/mission-controls
-/missions/pause-hold-complete
-
-Outbox
-/outbox
-/outbox/review-sequences
-/outbox/understand-statuses
-/outbox/resolve-problems
-/outbox/handle-replies
-
-Reference
-/reference
-/reference/execution-truth
-/reference/safety-boundaries
-/reference/timezones
-/reference/audit-log
-/reference/about-me
-/reference/about-offer
-/reference/roles-and-access
-/reference/account-data-billing
-/reference/troubleshooting
-/reference/support
-```
+`legacy-redirects.json` owns the permanent redirects from previous documentation URLs. Preserve useful old links when moving a page.
 
 ## Run locally
 
 ```bash
-npm install
+npm ci
 npm run dev
-npm run typecheck
+npm run check
 npm run build
 ```
 
-Set `NEXT_PUBLIC_SITE_URL` to the deployed origin used for metadata, robots, and the sitemap. The production origin is `https://docs.heylemma.com`.
+The site uses Next.js and Fumadocs. `NEXT_PUBLIC_SITE_URL` controls metadata, robots, and the sitemap; the production origin remains `https://docs.heylemma.com`. Application links point to `https://app.speiros.com`.
 
-## Brand system
+## Product evidence
 
-The interface follows the approved Lemma brand kit v2.0.0, **Sunrise Threshold**: a flat orthogonal doorway framing a Signal-orange half-sun on the horizon, with Paper and Ink fields, Inter Tight, Sometype Mono, and sharp control geometry. Superseded perspective marks, coastal imagery, and the serif layer are intentionally excluded.
+Start with `docs-inventory/README.md`. The October 2026 rewrite follows the current recruiting interface and records page-level source evidence. Code review verifies supported behavior; it does not prove successful live provider execution. Public articles distinguish candidate confirmation, message approval, channel authorization, scheduling, and confirmed sending.
 
-## Product truth
+Use exact visible labels where a user must find a control. Never present a planned integration, automatic outcome, private fixture, or historical screenshot as current behavior.
 
-The published guides describe the verified LinkedIn workflow:
+## Visual identity
 
-- connect one Sender and verify that a healthy Connect or Replace becomes Ready;
-- recover an exceptional Dry run Sender with Activate sending when that control appears;
-- distinguish configured targets from the Sender’s automatic warm-up and effective capacity;
-- add real Leads from LinkedIn or a spreadsheet;
-- create a bounded Mission and Sequence;
-- use the Lemma-led conversation or the operational Manual Mission view;
-- review prepared work and provider evidence in Outbox;
-- distinguish Draft, approved, scheduled, running, blocked, failed, and provider-confirmed states;
-- store Operator and offer dossiers without promising downstream reuse that is not wired;
-- handle replies and problems without implying an outcome guarantee.
-
-Do not document the retired studies product, automatic Lead sourcing, detailed email execution, CRM writes, teammate administration, hidden integration fixtures, unsupported channels, or guaranteed results as current capabilities.
-
-## Documentation evidence
-
-The audit system in `docs-inventory/` records:
-
-- the verified product map;
-- page coverage and remaining gaps;
-- screenshot provenance and recapture needs;
-- the design-reference decisions behind the Help Center UX.
-
-Update this evidence before adding broad product claims or new capability areas.
+The current Speiros mark comes from the application's approved brand assets. The Help Center retains its original reading layout and typography, with current Speiros identity, palette, metadata, search labels, and social card. Product screenshots require a fresh capture with synthetic data before inclusion.

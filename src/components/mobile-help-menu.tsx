@@ -123,7 +123,7 @@ export function MobileHelpMenu({
                 <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-3">
                   <div>
                     <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--accent)]">
-                      Lemma Help Center
+                      Speiros Help Center
                     </p>
                     <h2
                       id="mobile-help-menu-title"

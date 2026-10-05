@@ -1,0 +1,42 @@
+---
+title: Recover or replace a Sender
+description: Choose the recovery action that matches an account's verified state.
+---
+
+Check **Connection**, **Execution**, and their explanations before changing a Sender. Reconnecting an account, ending a pause, and replacing its identity solve different problems.
+
+## Before you start
+
+Open the correct workspace and [Settings → Sender](https://app.speiros.com/settings/channels). Read the visible provider reason and identify the account you intend to keep.
+
+## Choose the recovery action
+
+| What you see | What to do |
+| --- | --- |
+| **Sender readiness is unavailable**, or a stale read-only view | Choose **Retry** to verify the current state. |
+| **Paused** | Choose **Resume sending** when the pause should end. |
+| **Dry run** with an activation control | Review the account and schedule, then choose **Activate sending**. |
+| LinkedIn connection or product access needs verification | Choose **Refresh**, complete verification, and return to read both states. |
+| Another channel offers **Reconnect** | Use that control to verify the existing account again. |
+| **Removed** | Read the page's instruction to connect again and create a new Sender. |
+| **Restricted** or an **Unavailable** execution badge | Follow the specific reason and available controls; this differs from page-level unavailable readiness. |
+
+After the operation, confirm the account identity, connection, execution reason, and schedule. Verification does not mean the next action has already sent.
+
+## Replace an account
+
+Use **Replace** to change the Sender identity. Review **Replace this Sender?**, then **Replace Sender** and complete verification. Speiros verifies the new identity before disabling the current Sender.
+
+Replacement is blocked while unfinished work still references the account. Do not assume replacement moves existing work to the new account; inspect the affected Mission and [contact Support](/help/support) if you cannot resolve the block.
+
+## Transfer an account
+
+The **Use this LinkedIn account with Speiros?** dialog means the account is already connected elsewhere. Continuing with **Use with Speiros** can stop campaigns using it in another workspace or tool. Older duplicate connections and their synced data may also be removed; the LinkedIn account itself is unaffected.
+
+Review the other workspace or tool before confirming. This is a deliberate transfer with consequences, rather than a routine refresh.
+
+## If recovery fails
+
+Read the error and check the account state again. An incomplete connection flow does not establish that the previous Sender was replaced. If identity verification fails or the same error recurs, [contact Support](/help/support) with the operation and visible reason.
+
+Next, [review the sending schedule](/settings/schedule-capacity) and [waiting work](/work/sending-plan).

@@ -17,7 +17,7 @@ const search = createFromSource(source, {
             {
               heading: undefined,
               content:
-                "Lemma outbound help for Sender setup, Leads, Lists, Missions, Sequences, Outbox replies, problems, settings, and troubleshooting.",
+                "Speiros recruiting help for roles, company context, candidate search, selection, missions, sequence approval, replies, Sender accounts, calendars, integrations, and troubleshooting.",
             },
           ],
         },
@@ -42,51 +42,56 @@ const sequenceReviewPattern =
 
 const queryExpansions: Array<[RegExp, string]> = [
   [
-    /\b(getting started|how (?:do|can) i start|beginner|new to lemma|commencer|d[eé]marrer|d[eé]butant)\b/i,
-    "Lemma 101 beginner start first setup",
+    /\b(getting started|how (?:do|can) i start|beginner|new to speiros|commencer|d[eé]marrer|d[eé]butant)\b/i,
+    "Speiros beginner start first setup recruitment",
   ],
   [
-    /\b(first|premi[eè]re?)\b.*\b(mission|campaign|outreach)\b|\b(mission|campaign|outreach)\b.*\b(first|premi[eè]re?)\b/i,
-    "prepare first Mission quickstart",
+    /\b(first|premi[eè]re?)\b.*\b(mission|recruitment|recruiting|outreach)\b|\b(mission|recruitment|recruiting|outreach)\b.*\b(first|premi[eè]re?)\b/i,
+    "first recruitment role candidates mission",
   ],
   [/\b(error|errors|broken|failure|failed)\b/i, "troubleshooting problem recovery"],
-  [/\b(csv|spreadsheet|xlsx)\b/i, "spreadsheet import leads file"],
+  [/\b(csv|spreadsheet|xlsx)\b/i, "spreadsheet import candidates file"],
   [
     /\b(sales navigator|recruiter|linkedin search|search url)\b/i,
-    "LinkedIn import leads",
+    "LinkedIn search candidates products",
   ],
   [/\b(connect|connection)\b.*\b(linkedin|sender)\b/i, "Sender settings"],
   [/\b(pause|reconnect|replace)\b.*\bsender\b/i, "Sender settings"],
-  [/\b(reply|replies|response)\b/i, "Outbox handle replies"],
-  [/\b(status|statuses|state|states)\b/i, "Outbox sequence status"],
-  [sequenceReviewPattern, "Outbox review Lemma-authored Sequence"],
-  [/\b(time ?zone|Europe\/Paris|browser local|send date)\b/i, "time display Outbox Sender"],
+  [/\b(reply|replies|response)\b/i, "Work candidate replies Needs you"],
+  [/\b(status|statuses|state|states)\b/i, "Sending plan sequence status evidence"],
+  [sequenceReviewPattern, "review approve Sequence drafts"],
+  [/\b(time ?zone|Europe\/Paris|browser local|send date)\b/i, "timezones display Sender calendar Sending plan"],
   [/\b(rate limit|rate-limited|cooldown)\b/i, "LinkedIn import paused"],
 ];
 
 const curatedDestinations: Array<[RegExp, string]> = [
+  [/\b(role|job description|hiring brief)\b/i, "/recruiting/create-role"],
+  [/\b(company context|recruiting context|knowledge|publish)\b/i, "/recruiting/review-context"],
+  [/\b(select|selection|cohort|confirm audience)\b/i, "/candidates/confirm-selection"],
+  [/\b(calendar|interview availability)\b/i, "/settings/calendar"],
+  [/\b(do not contact|dnc|opt.?out)\b/i, "/help/do-not-contact"],
   [
-    /\b(getting started|how (?:do|can) i start|beginner|new to lemma|commencer|d[eé]marrer|d[eé]butant)\b/i,
-    "/start/lemma-101",
+    /\b(getting started|how (?:do|can) i start|beginner|new to speiros|commencer|d[eé]marrer|d[eé]butant)\b/i,
+    "/start/overview",
   ],
   [
-    /\b(first|premi[eè]re?)\b.*\b(mission|campaign|outreach)\b|\b(mission|campaign|outreach)\b.*\b(first|premi[eè]re?)\b/i,
-    "/start/quickstart",
+    /\b(first|premi[eè]re?)\b.*\b(mission|recruitment|recruiting|outreach)\b|\b(mission|recruitment|recruiting|outreach)\b.*\b(first|premi[eè]re?)\b/i,
+    "/start/first-recruitment",
   ],
-  [/\b(connect|connection)\b.*\b(linkedin|sender)\b/i, "/sender/connect-and-activate"],
-  [/\b(pause|reconnect|replace)\b.*\bsender\b/i, "/sender/pause-reconnect-replace"],
-  [/\b(error|errors|broken|failure|failed|troubleshoot)\b/i, "/reference/troubleshooting"],
-  [/\b(csv|spreadsheet|xlsx)\b/i, "/leads/import-spreadsheet"],
+  [/\b(connect|connection)\b.*\b(linkedin|sender)\b/i, "/settings/connect-linkedin"],
+  [/\b(pause|reconnect|replace)\b.*\bsender\b/i, "/settings/recover-sender"],
+  [/\b(error|errors|broken|failure|failed|troubleshoot)\b/i, "/help"],
+  [/\b(csv|spreadsheet|xlsx)\b/i, "/candidates/import-spreadsheet"],
   [
     /\b(sales navigator|recruiter|linkedin search|search url)\b/i,
-    "/leads/import-from-linkedin",
+    "/candidates/linkedin-products",
   ],
-  [/\b(reply|replies|response)\b/i, "/outbox/handle-replies"],
-  [/\b(status|statuses|state|states)\b/i, "/outbox/understand-statuses"],
-  [sequenceReviewPattern, "/outbox/review-sequences"],
-  [/\b(time ?zone|Europe\/Paris|browser local|send date)\b/i, "/reference/timezones"],
-  [/\b(rate limit|rate-limited|cooldown)\b/i, "/leads/import-from-linkedin"],
-  [/\b(onboarding|first setup|five screens)\b/i, "/start/onboarding"],
+  [/\b(reply|replies|response)\b/i, "/work/replies"],
+  [/\b(status|statuses|state|states)\b/i, "/help/statuses"],
+  [sequenceReviewPattern, "/work/approve-sequence"],
+  [/\b(time ?zone|Europe\/Paris|browser local|send date)\b/i, "/help/timezones"],
+  [/\b(rate limit|rate-limited|cooldown)\b/i, "/help/search-import"],
+  [/\b(onboarding|first setup)\b/i, "/start/onboarding"],
 ];
 
 function expandQuery(query: string) {
@@ -117,12 +122,12 @@ function getCuratedResult(destination: string) {
     breadcrumbs: [
       {
         start: "Start here",
-        sender: "Sender",
-        leads: "Leads",
-        missions: "Missions",
-        outbox: "Outbox",
-        reference: "Reference",
-      }[page.slugs[0] ?? ""] ?? "Lemma Help Center",
+        recruiting: "Prepare a recruitment",
+        candidates: "Find and select candidates",
+        work: "Supervise the work",
+        settings: "Connect and configure",
+        help: "Resolve a problem",
+      }[page.slugs[0] ?? ""] ?? "Speiros Help Center",
     ],
   };
 }

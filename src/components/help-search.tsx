@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Search, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchContext } from "fumadocs-ui/contexts/search";
-import { supportEmail } from "@/lib/site";
+
 
 const HELP_SEARCH_OPEN_EVENT = "lemma:help-search-open";
 
@@ -100,7 +100,7 @@ export function HelpSearchButton({
         className,
       ].join(" ")}
       onClick={openSearch}
-      aria-label="Search Lemma help"
+      aria-label="Search Speiros help"
       aria-haspopup="dialog"
       aria-controls="lemma-help-search-dialog"
     >
@@ -234,7 +234,7 @@ export function HelpSearchDialog() {
         <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-3 sm:px-5">
           <div>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--accent)]">
-              Lemma Help Center
+              Speiros Help Center
             </p>
             <h2
               id="lemma-help-search-title"
@@ -255,7 +255,7 @@ export function HelpSearchDialog() {
 
         <div className="border-b border-[var(--border)] p-4 sm:p-5">
           <label htmlFor="lemma-help-search-input" className="sr-only">
-            Search Lemma help
+            Search Speiros help
           </label>
           <div className="flex min-h-12 items-center rounded-lg border border-[var(--border)] bg-white px-3 focus-within:border-[var(--accent)] focus-within:ring-2 focus-within:ring-[var(--accent-soft)]">
             <Search
@@ -306,10 +306,10 @@ export function HelpSearchDialog() {
                 Search is temporarily unavailable.
               </p>
               <a
-                href={`mailto:${supportEmail}?subject=Help%20Center%20search`}
+                href="/help/support"
                 className="mt-3 inline-flex text-sm font-semibold text-[var(--accent)] underline underline-offset-4"
               >
-                Ask Lemma support
+                Contact support
               </a>
             </div>
           ) : groupedResults.length > 0 ? (
@@ -354,14 +354,14 @@ export function HelpSearchDialog() {
               </p>
               <div className="mt-4 flex flex-wrap justify-center gap-2">
                 <Link
-                  href="/start/lemma-101"
+                  href="/start/overview"
                   className="inline-flex min-h-10 items-center rounded bg-[var(--accent)] px-3 text-sm font-semibold text-white"
                   onClick={closeSearch}
                 >
-                  Start Lemma 101
+                  Start with Speiros
                 </Link>
                 <Link
-                  href="/reference/troubleshooting"
+                  href="/help"
                   className="inline-flex min-h-10 items-center rounded border border-[var(--border)] bg-white px-3 text-sm font-semibold text-[var(--ink)]"
                   onClick={closeSearch}
                 >
@@ -369,9 +369,7 @@ export function HelpSearchDialog() {
                 </Link>
               </div>
               <a
-                href={`mailto:${supportEmail}?subject=${encodeURIComponent(
-                  `Missing Help Center guide: ${query.trim()}`,
-                )}`}
+                href="/help/support"
                 className="mt-4 inline-flex text-sm font-semibold text-[var(--accent)] underline underline-offset-4"
               >
                 Report missing guidance

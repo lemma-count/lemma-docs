@@ -1,8 +1,18 @@
+import { readFileSync } from "node:fs";
 import { createMDX } from "fumadocs-mdx/next";
+
+const legacyRedirects = JSON.parse(readFileSync(new URL("./legacy-redirects.json", import.meta.url), "utf8"));
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return Object.entries(legacyRedirects).map(([source, destination]) => ({
+      source,
+      destination,
+      permanent: true,
+    }));
+  },
   async headers() {
     return [
       {

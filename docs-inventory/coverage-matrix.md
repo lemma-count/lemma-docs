@@ -1,31 +1,25 @@
-# Documentation Coverage Matrix
+# Documentation coverage matrix
 
-Updated: 2026-07-26
+Updated: 2026-10-05. Documentation: 52 canonical pages, six collections. Article evidence records the product commit and exact code paths. No operational write is described as executed live by this documentation session.
 
-| User job | Pages | Evidence status | Remaining gap |
+| Collection | Pages including overview | Coverage | Evidence ledger |
 | --- | --- | --- | --- |
-| Find the right task quickly | `/` | Search-first home, popular jobs, workflow collections, and execution-truth proof panel verified at desktop and mobile widths | Revisit ranking after real search and article analytics accumulate |
-| Understand the product and execution model | `/start/what-is-lemma`, `/start/core-concepts` | Verified against Product KB and shipped GTM boundary | Recheck when all UI surfaces finish the Mission naming migration |
-| Reach first reviewable work | `/start/quickstart` | Verified against onboarding registry and current navigation | Recheck when onboarding copy resolves the current auto-activation contradiction |
-| Connect and operate a Sender | `/sender/*` | Verified in Sender settings, current database contract, and automatic warm-up model; current readiness and capacity screenshots published | Product Settings banner still incorrectly describes healthy Connect/Replace as explicitly activated |
-| Import and organize Leads | `/leads/*` | Verified in current import drawer, LinkedIn import, spreadsheet mapping, List and DNC flows; LinkedIn import screenshot published | Spreadsheet conflict-review screenshot remains useful but non-blocking |
-| Create Lemma-led and Manual Missions | `/missions/create-lemma-led`, `/missions/build-manually` | Verified in current creation fork and Manual wizard; exact Manual Review screenshot published | Capture Lemma-led creation only when a fully synthetic current Mission is available |
-| Inspect Mission and Lead context | `/missions/research-and-drafts` | Verified against Mission inspector, Mission detail, Lead drawer, and Outbox editor | Exact source provenance remains available only at Lead-field level |
-| Use Cockpit controls | `/missions/cockpit-and-controls` | Lemma-led and Manual Cockpit contracts separated; Manual queue-truth screenshot published | Capture a fully synthetic Lemma-led approval state |
-| Navigate and measure Missions | `/missions`, `/missions/pause-hold-complete` | Current/Archived, name search, workspace overview, Performance, completion report, rename, and terminal archive documented | Avoid the inconsistent bulk Archive control until product semantics are repaired |
-| Review and validate Sequences | `/outbox/review-sequences` | Verified current Outbox Sequence model; planned-touch/evidence screenshot published | Refresh when current tab labels or drawer contract change |
-| Understand execution states | `/outbox/understand-statuses`, `/reference/execution-truth` | Verified current read model and provider-evidence contract | Keep labels synchronized with shipped UI |
-| Recover blocked or failed work | `/outbox/resolve-problems`, `/reference/troubleshooting` | Verified current recovery and idempotency constraints | Add provider-specific examples only after stable public support |
-| Handle replies | `/outbox/handle-replies` | Verified current reply/Lead flow | Final reply and pipeline taxonomies remain open product questions |
-| Store workspace context | `/reference/about-me`, `/reference/about-offer` | Live editable and validated dossiers documented without claiming unwired Mission/drafting reuse | Revisit only after downstream readers and minimum validation requirements ship |
-| Understand access | `/reference/roles-and-access` | Full-access Operator and workspace switch/create verified | Teammate invitation and organization administration are not live |
+| Start here | 6 | Product overview, map, concepts, three-stage onboarding, first recruitment | `start-writing-evidence.md` |
+| Prepare a recruitment | 6 | Company context, sources, review/publication, role creation and lifecycle | `recruiting-writing-evidence.md` |
+| Find and select candidates | 8 | Conversation, LinkedIn products, profile, URL import, spreadsheet, lists, cohort confirmation | `candidate-writing-evidence.md` |
+| Supervise the work | 11 | Preparation, controls, drafts, approval, sending, decisions, replies, activity, lifecycle, historical manual maintenance | `work-writing-evidence.md` |
+| Connect and configure | 12 | Sender, access, schedule, recovery, profile, calendar, candidate resources, Beta systems, tools, workspace, account | `settings-writing-evidence.md` |
+| Resolve a problem | 8 | States, search/import, sequence, DNC, timezones, Audit log, Support | `help-writing-evidence.md` |
+| Home | 1 | Search, six tasks, six shallow collections | Browser/HTTP verification in delivery record |
 
-## Page completion bar
+## Completion and maintenance
 
-A page is ready when it:
+Each article gives a concrete task or explanation, appropriate prerequisites, current labels, results, recovery, and a next action. Navigation/search use canonical routes. `legacy-redirects.json` owns 42 permanent migrations, including all retired published routes and the earlier legacy aliases.
 
-1. Answers one real customer job.
-2. Uses current public product language.
-3. Separates preparation, approval, scheduling, and provider confirmation.
-4. States prerequisites, expected result, recovery, and next action.
-5. Uses a current sanitized screenshot only when it improves comprehension.
+The old 41-page disposition is retained in `speiros-page-migration-2026-10-05.md` as a historical proposal. `legacy-redirects.json` is the implementation authority; there is no second runtime redirect list.
+
+## Remaining verification scope
+
+The section ledgers list operational reproduction still needed for fresh product screenshots and stronger runtime evidence: role/context writes, search/import, selected-cohort moves, approvals, provider sends, inbound/reply flows, reconnection/transfer, calendar, Beta imports, invitations and checkout. No production mutation or real-person contact was performed. Channel rollout contradictions remain in `product-defects.md`.
+
+Advanced developer/external-agent and Voice Beta tutorials are not part of this core delivery. A French translation is also a separate editorial project; all public articles remain English.

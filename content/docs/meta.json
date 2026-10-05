@@ -1,12 +1,12 @@
 {
-  "title": "Lemma Help Center",
+  "title": "Speiros Help Center",
   "pages": [
     "index",
     "start",
-    "sender",
-    "leads",
-    "missions",
-    "outbox",
-    "reference"
+    "recruiting",
+    "candidates",
+    "work",
+    "settings",
+    "help"
   ]
 }

@@ -11,7 +11,6 @@ import {
   ChevronRight,
   Compass,
   MessageSquareWarning,
-  MessageSquareReply,
   RadioTower,
   Send,
   ShieldCheck,
@@ -26,11 +25,11 @@ import { MobileHelpMenu } from "@/components/mobile-help-menu";
 import { TrackedAnchor } from "@/components/tracked-anchor";
 import { appUrl } from "@/lib/site";
 import startMeta from "../../content/docs/start/meta.json";
-import senderMeta from "../../content/docs/sender/meta.json";
-import leadsMeta from "../../content/docs/leads/meta.json";
-import missionsMeta from "../../content/docs/missions/meta.json";
-import outboxMeta from "../../content/docs/outbox/meta.json";
-import referenceMeta from "../../content/docs/reference/meta.json";
+import recruitingMeta from "../../content/docs/recruiting/meta.json";
+import candidatesMeta from "../../content/docs/candidates/meta.json";
+import workMeta from "../../content/docs/work/meta.json";
+import settingsMeta from "../../content/docs/settings/meta.json";
+import helpMeta from "../../content/docs/help/meta.json";
 
 export type HelpArticle = {
   title: string;
@@ -57,91 +56,50 @@ type PrimaryHelpItem = {
 };
 
 const primaryHelpNav: PrimaryHelpItem[] = [
-  { id: "new", title: "New to Lemma", url: "/start" },
+  { id: "new", title: "New to Speiros", url: "/start" },
   { id: "tasks", title: "Do a task", url: "/#tasks" },
-  {
-    id: "troubleshoot",
-    title: "Troubleshoot",
-    url: "/reference/troubleshooting",
-  },
-  { id: "reference", title: "Reference", url: "/reference" },
+  { id: "settings", title: "Connect and configure", url: "/settings" },
+  { id: "help", title: "Troubleshoot", url: "/help" },
 ];
 
 function isPrimaryHelpItemActive(item: PrimaryHelpItem, activeUrl?: string) {
   if (!activeUrl) return false;
   if (item.id === "new") return activeUrl.startsWith("/start");
-  if (item.id === "troubleshoot") {
-    return activeUrl === "/reference/troubleshooting";
-  }
-  if (item.id === "reference") {
-    return (
-      activeUrl.startsWith("/reference") &&
-      activeUrl !== "/reference/troubleshooting"
-    );
-  }
+  if (item.id === "settings") return activeUrl.startsWith("/settings");
+  if (item.id === "help") return activeUrl.startsWith("/help");
   return false;
 }
 
 const collectionConfigs = [
   {
-    slug: "start",
-    title: "Start here",
-    label: "Start",
-    description:
-      "Understand Lemma, connect a LinkedIn Sender, and reach your first reviewable work.",
-    intent: "First setup",
-    icon: Compass,
-    pages: startMeta.pages,
+    slug: "start", title: "Start here", label: "Start",
+    description: "Find your way around Speiros and follow your first recruiting workflow.",
+    intent: "First steps", icon: Compass, pages: startMeta.pages,
   },
   {
-    slug: "sender",
-    title: "Sender",
-    label: "Sender",
-    description:
-      "Connect, schedule, pause, resume, or recover the LinkedIn account Lemma can use.",
-    intent: "Channel readiness",
-    icon: RadioTower,
-    pages: senderMeta.pages,
+    slug: "recruiting", title: "Prepare a recruitment", label: "Recruiting",
+    description: "Give Speiros company context, define the role, and review what it learns.",
+    intent: "Context and roles", icon: BookOpen, pages: recruitingMeta.pages,
   },
   {
-    slug: "leads",
-    title: "Leads",
-    label: "Leads",
-    description:
-      "Bring in the right people from LinkedIn or a spreadsheet and keep them organized.",
-    intent: "Audience",
-    icon: UsersRound,
-    pages: leadsMeta.pages,
+    slug: "candidates", title: "Find and select candidates", label: "Candidates",
+    description: "Shape a search, inspect profiles, import people, and confirm your selection.",
+    intent: "Find the right people", icon: UsersRound, pages: candidatesMeta.pages,
   },
   {
-    slug: "missions",
-    title: "Missions",
-    label: "Missions",
-    description:
-      "Turn an outbound outcome into a bounded plan, research, and reviewable Sequence.",
-    intent: "Plan the work",
-    icon: Send,
-    pages: missionsMeta.pages,
+    slug: "work", title: "Supervise the work", label: "Work",
+    description: "Review drafts, authorize outreach, follow sending, and respond to candidates.",
+    intent: "Decisions and conversations", icon: Send, pages: workMeta.pages,
   },
   {
-    slug: "outbox",
-    title: "Outbox",
-    label: "Outbox",
-    description:
-      "Review and validate Lemma-authored Sequences, act on Manual work, handle replies, and resolve problems.",
-    intent: "Review and run",
-    icon: MessageSquareReply,
-    pages: outboxMeta.pages,
+    slug: "settings", title: "Connect and configure", label: "Settings",
+    description: "Set up accounts, calendars, tools, workspace access, and billing.",
+    intent: "Accounts and tools", icon: RadioTower, pages: settingsMeta.pages,
   },
   {
-    slug: "reference",
-    title: "Reference",
-    label: "Reference",
-    description:
-      "Check execution truth, safety boundaries, product terms, and recovery guidance.",
-    intent: "Truth and recovery",
-    icon: ShieldCheck,
-    pages: referenceMeta.pages,
+    slug: "help", title: "Resolve a problem", label: "Help",
+    description: "Understand states and evidence, recover blocked work, and get support.",
+    intent: "Understand and recover", icon: ShieldCheck, pages: helpMeta.pages,
   },
 ] as const;
 
@@ -179,12 +137,12 @@ export function getCollectionForUrl(
 
 export function getPopularArticles(pages: HelpArticle[]) {
   const preferredUrls = [
-    "/start/quickstart",
-    "/sender/connect-and-activate",
-    "/leads/import-from-linkedin",
-    "/missions/create-lemma-led",
-    "/outbox/review-sequences",
-    "/outbox/resolve-problems",
+    "/start/first-recruitment",
+    "/recruiting/create-role",
+    "/candidates/search",
+    "/candidates/confirm-selection",
+    "/work/approve-sequence",
+    "/work/replies",
   ];
 
   return preferredUrls
@@ -210,13 +168,10 @@ export function HelpHeader({
           <Link
             href="/"
             className="flex min-w-0 items-center gap-3 text-[var(--ink)]"
-            aria-label="Lemma Help Center"
+            aria-label="Speiros Help Center"
           >
-            <img
-              src="/brand/logo/lemma-lockup-horizontal-ink.svg"
-              alt="Lemma"
-              className="h-[25px] w-auto shrink-0"
-            />
+            <img src="/speiros-mark.svg" alt="" className="h-8 w-8 shrink-0" />
+            <span className="text-xl font-semibold tracking-tight">Speiros</span>
             <span className="hidden border-l border-[var(--border)] pl-3 text-sm font-medium text-[var(--muted)] sm:inline">
               Help Center
             </span>
@@ -281,24 +236,21 @@ export function HelpFooter() {
       <div className="mx-auto flex max-w-[1400px] flex-col gap-7 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-10">
         <div>
           <div className="flex items-center gap-3">
-            <img
-              src="/brand/logo/lemma-lockup-horizontal-paper.svg"
-              alt="Lemma"
-              className="h-[25px] w-auto"
-            />
+            <img src="/speiros-mark.svg" alt="" className="h-8 w-8" />
+            <span className="text-xl font-semibold tracking-tight">Speiros</span>
             <span className="border-l border-white/20 pl-3 text-sm font-medium text-white/72">
               Help Center
             </span>
           </div>
           <p className="mt-3 max-w-xl text-sm leading-6 text-white/68">
-            Practical guidance for researched, reviewable, operator-controlled
-            outbound.
+            Practical guidance for recruiting with clear context, reviewable work,
+            and human supervision.
           </p>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-white/72">
           <TrackedAnchor
             className="transition hover:text-white"
-            href="https://heylemma.com"
+            href="https://speiros.com"
             event="docs_footer_product_click"
             eventProps={{
               cta_id: "docs_footer_product",
@@ -320,8 +272,8 @@ export function HelpFooter() {
           >
             Open app
           </TrackedAnchor>
-          <Link className="transition hover:text-white" href="/reference">
-            Reference
+          <Link className="transition hover:text-white" href="/help">
+            Help and support
           </Link>
         </div>
       </div>
@@ -343,14 +295,14 @@ export function HelpHome({
           <div className="flex min-w-0 flex-col justify-center px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
             <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
               <span className="h-2 w-2 bg-[var(--accent)]" aria-hidden />
-              Guidance / LinkedIn outbound
+              Guidance / Recruiting with Speiros
             </p>
             <h1 className="mt-6 max-w-[760px] font-display text-[3.15rem] font-[720] leading-[0.92] tracking-[-0.05em] text-[var(--ink)] sm:text-[4.6rem]">
-              One clear next step for every outbound job.
+              One clear next step for your recruiting work.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--body)] sm:text-lg sm:leading-8">
-              New to Lemma? Follow one guided path from the five core concepts
-              to your first reviewed Sequence and verified outcome.
+              Build your role context, find and select candidates, then supervise
+              the conversations that move your recruitment forward.
             </p>
             <div className="mt-8 max-w-2xl">
               <HelpSearchButton />
@@ -359,21 +311,21 @@ export function HelpHome({
             <div className="mt-8 grid max-w-2xl gap-5 border-t border-[var(--border)] pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
               <div>
                 <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--accent)]">
-                  New to Lemma
+                  New to Speiros
                 </div>
                 <h2 className="mt-2 text-lg font-semibold text-[var(--ink)]">
-                  Start with Lemma 101
+                  Start with your first recruitment
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
-                  Learn the map first, then follow the setup path that matches
-                  your current setup.
+                  Follow the path from your company context and open role
+                  to reviewed outreach and visible results.
                 </p>
               </div>
               <Link
-                href="/start/lemma-101"
+                href="/start/first-recruitment"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded bg-[var(--accent)] px-4 text-sm font-semibold text-white transition hover:bg-[var(--accent-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
               >
-                Start Lemma 101
+                Start recruiting with Speiros
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
             </div>
@@ -409,12 +361,12 @@ export function HelpHome({
         </div>
         <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <IntentCard
-            href="/start/lemma-101"
+            href="/start/first-recruitment"
             icon={Compass}
-            label="New to Lemma"
+            label="New to Speiros"
             title="Follow the beginner path"
           >
-            Learn the map, set up, review one Sequence, and verify what happened.
+            Prepare a role, find candidates, review a sequence, and check what happened.
           </IntentCard>
           <IntentCard
             href="/#tasks"
@@ -422,10 +374,10 @@ export function HelpHome({
             label="Do a task"
             title="Get something done"
           >
-            Jump directly to a setup, import, Mission, review, or recovery guide.
+            Jump to a role, search, candidate selection, approval, or recovery guide.
           </IntentCard>
           <IntentCard
-            href="/reference/troubleshooting"
+            href="/help"
             icon={MessageSquareWarning}
             label="Something is wrong"
             title="Troubleshoot a problem"
@@ -433,12 +385,12 @@ export function HelpHome({
             Diagnose blocked work from the state or symptom you can see.
           </IntentCard>
           <IntentCard
-            href="/reference"
+            href="/help"
             icon={BookOpen}
             label="Look something up"
-            title="Open the reference"
+            title="Understand states and evidence"
           >
-            Check product terms, execution truth, safety, time, and account rules.
+            Check what is prepared, authorized, scheduled, confirmed, or waiting for you.
           </IntentCard>
         </div>
       </section>
@@ -483,11 +435,7 @@ export function HelpHome({
             </p>
           </div>
           <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {collections
-              .filter(({ slug }) =>
-                ["sender", "leads", "missions", "outbox"].includes(slug),
-              )
-              .map((collection) => (
+            {collections.map((collection) => (
                 <CollectionCard key={collection.slug} collection={collection} />
               ))}
           </div>
@@ -532,86 +480,8 @@ export function HelpArticleShell({
     currentIndex >= 0 && currentIndex < collectionNavItems.length - 1
       ? collectionNavItems[currentIndex + 1]
       : null;
-  const journeyPagination: Record<
-    string,
-    {
-      previous: { title: string; url: string } | null;
-      next: { title: string; url: string } | null;
-    }
-  > = {
-    "/start": {
-      previous: null,
-      next: { title: "Lemma 101", url: "/start/lemma-101" },
-    },
-    "/start/lemma-101": {
-      previous: { title: "Start here", url: "/start" },
-      next: { title: "Choose your setup path", url: "/start#choose-your-path" },
-    },
-    "/start/onboarding": {
-      previous: {
-        title: "Choose your setup path",
-        url: "/start#choose-your-path",
-      },
-      next: {
-        title: "Review your first Sequence",
-        url: "/start/review-first-sequence",
-      },
-    },
-    "/start/quickstart": {
-      previous: {
-        title: "Choose your setup path",
-        url: "/start#choose-your-path",
-      },
-      next: {
-        title: "Review your first Sequence",
-        url: "/start/review-first-sequence",
-      },
-    },
-    "/start/review-first-sequence": {
-      previous: {
-        title: "Choose your setup path",
-        url: "/start#choose-your-path",
-      },
-      next: {
-        title: "Verify the first outcome",
-        url: "/start/verify-first-outcome",
-      },
-    },
-    "/start/verify-first-outcome": {
-      previous: {
-        title: "Review your first Sequence",
-        url: "/start/review-first-sequence",
-      },
-      next: { title: "Understand Home", url: "/start/home" },
-    },
-    "/start/home": {
-      previous: {
-        title: "Verify the first outcome",
-        url: "/start/verify-first-outcome",
-      },
-      next: null,
-    },
-  };
-  const journey = journeyPagination[page.url];
-  const previous = journey ? journey.previous : collectionPrevious;
-  const next = journey ? journey.next : collectionNext;
-  const beginnerProgress: Record<
-    string,
-    { current: number; label: string }
-  > = {
-    "/start/lemma-101": { current: 1, label: "Learn the map" },
-    "/start/onboarding": { current: 2, label: "Complete first-time setup" },
-    "/start/quickstart": { current: 2, label: "Prepare your current setup" },
-    "/start/review-first-sequence": {
-      current: 3,
-      label: "Review the first Sequence",
-    },
-    "/start/verify-first-outcome": {
-      current: 4,
-      label: "Verify what happened",
-    },
-  };
-  const progress = beginnerProgress[page.url];
+  const previous = collectionPrevious;
+  const next = collectionNext;
   const tocItems = toc.filter((item) => item.depth <= 3);
   const isCollectionIndex = collection?.url === page.url;
   const CollectionIcon = collection?.icon;
@@ -680,35 +550,7 @@ export function HelpArticleShell({
                 {page.description}
               </p>
             ) : null}
-            {progress ? (
-              <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
-                <div className="flex items-center justify-between gap-4 text-sm">
-                  <span className="font-semibold text-[var(--ink)]">
-                    Lemma 101 · Step {progress.current} of 4
-                  </span>
-                  <span className="text-right text-[var(--muted)]">
-                    {progress.label}
-                  </span>
-                </div>
-                <div
-                  className="mt-3 grid grid-cols-4 gap-1.5"
-                  aria-label={`Step ${progress.current} of 4`}
-                >
-                  {[1, 2, 3, 4].map((step) => (
-                    <span
-                      key={step}
-                      aria-hidden="true"
-                      className={[
-                        "h-1.5 rounded-full",
-                        step <= progress.current
-                          ? "bg-[var(--accent)]"
-                          : "bg-[var(--border)]",
-                      ].join(" ")}
-                    />
-                  ))}
-                </div>
-              </div>
-            ) : null}
+
           </div>
 
           {collection && collectionNavItems.length > 1 ? (
