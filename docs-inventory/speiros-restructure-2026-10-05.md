@@ -87,6 +87,8 @@ Préconditions : accès au workspace ; pour les actions propres aux rôles, vér
 
 Préconditions : produit LinkedIn connecté et accessible pour les recherches correspondantes. Explorer sans rôle ne doit pas être présenté comme suffisant pour préparer une mission : vérifier les préconditions du rôle ouvert, de la sélection et du Sender. Aucun article ne doit suggérer que tous les résultats de recherche seront automatiquement contactés.
 
+La confirmation de la cohorte intervient après la préparation du brouillon de mission : `/candidates/confirm-selection` est une page de transition reliée depuis `/work/prepare-mission`, et non une étape de création préalable de la mission.
+
 ### Superviser le travail — `/work`
 
 1. Passer de la sélection à une mission de recrutement — `/work/prepare-mission`.
