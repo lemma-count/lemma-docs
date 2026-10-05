@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { appUrl } from "@/lib/site";
 import { ArrowRight, Search, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchContext } from "fumadocs-ui/contexts/search";
@@ -376,6 +377,10 @@ export function HelpSearchDialog() {
               </a>
             </div>
           )}
+        </div>
+        <div className="border-t border-[var(--border)] px-4 py-3 sm:px-5">
+          <a href={`${appUrl}/help${query.trim() ? `?question=${encodeURIComponent(query.trim().slice(0, 300))}` : ""}`} className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-[var(--accent)]">Ask assistant<ArrowRight aria-hidden="true" className="size-4" /></a>
+          <p className="text-xs text-[var(--muted)]">Get an answer based on these guides. No account required.</p>
         </div>
       </div>
     </dialog>
