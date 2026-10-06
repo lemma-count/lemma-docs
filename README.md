@@ -24,7 +24,7 @@ npm run check
 npm run build
 ```
 
-The site uses Next.js and Fumadocs. `NEXT_PUBLIC_SITE_URL` controls metadata, robots, and the sitemap; the production origin remains `https://docs.heylemma.com`. Application links point to `https://app.speiros.com`.
+The site uses Next.js and Fumadocs. `NEXT_PUBLIC_SITE_URL` controls metadata, robots, and the sitemap; the production origin remains `https://docs.speiros.com`. Application links point to `https://app.speiros.com`.
 
 ## Product evidence
 

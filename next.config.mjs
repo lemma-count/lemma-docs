@@ -7,11 +7,16 @@ const legacyRedirects = JSON.parse(readFileSync(new URL("./legacy-redirects.json
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return Object.entries(legacyRedirects).map(([source, destination]) => ({
+    return [{
+      source: "/:path*",
+      has: [{ type: "host", value: "docs.heylemma.com" }],
+      destination: "https://docs.speiros.com/:path*",
+      permanent: true,
+    }, ...Object.entries(legacyRedirects).map(([source, destination]) => ({
       source,
       destination,
       permanent: true,
-    }));
+    }))];
   },
   async headers() {
     return [
