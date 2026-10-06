@@ -19,7 +19,7 @@ async function pages(directory = new URL('../content/docs/', import.meta.url), p
 }
 const corpus = await pages();
 const redirects = JSON.parse(await readFile(new URL('../legacy-redirects.json', import.meta.url), 'utf8'));
-const service = createDocumentationService(corpus, 'https://docs.heylemma.com', redirects);
+const service = createDocumentationService(corpus, 'https://docs.speiros.com', redirects);
 
 test('ranks actual guides by question evidence rather than forcing a keyword destination', () => {
   const cases = [
@@ -44,7 +44,7 @@ test('returns bounded, deduplicated canonical citations and no retired pages', (
   assert.ok(result.results.length <= 5);
   assert.equal(new Set(result.results.map((page) => page.path)).size, result.results.length);
   for (const page of result.results) {
-    assert.equal(page.url, new URL(page.path, 'https://docs.heylemma.com').href);
+    assert.equal(page.url, new URL(page.path, 'https://docs.speiros.com').href);
     assert.ok(page.excerpt.length <= 500);
     assert.ok(!redirects[page.path]);
   }
@@ -57,7 +57,7 @@ test('reads from the canonical corpus, resolves known aliases and exposes stable
   assert.equal(page.truncated, false);
   assert.equal(service.read('/leads/import-spreadsheet').path, '/candidates/import-spreadsheet');
   assert.equal(service.read(original.path).revision, page.revision);
-  const changed = createDocumentationService([{ ...original, markdown: original.markdown + '\nUpdated' }], 'https://docs.heylemma.com');
+  const changed = createDocumentationService([{ ...original, markdown: original.markdown + '\nUpdated' }], 'https://docs.speiros.com');
   assert.notEqual(changed.read(original.path).revision, page.revision);
 });
 test('rejects traversal, URLs, fragments and invalid inputs rather than reading arbitrary files', () => {
@@ -73,8 +73,8 @@ test('rejects traversal, URLs, fragments and invalid inputs rather than reading 
 });
 test('bounds returned markdown while hashing the complete article', () => {
   const page = { path: '/large', title: 'Large', markdown: 'x'.repeat(32_001) };
-  const large = createDocumentationService([page], 'https://docs.heylemma.com');
+  const large = createDocumentationService([page], 'https://docs.speiros.com');
   assert.equal(large.read('/large').markdown.length, 32_000);
   assert.equal(large.read('/large').truncated, true);
-  assert.notEqual(large.read('/large').revision, createDocumentationService([{ ...page, markdown: page.markdown.slice(0, 32_000) }], 'https://docs.heylemma.com').read('/large').revision);
+  assert.notEqual(large.read('/large').revision, createDocumentationService([{ ...page, markdown: page.markdown.slice(0, 32_000) }], 'https://docs.speiros.com').read('/large').revision);
 });
