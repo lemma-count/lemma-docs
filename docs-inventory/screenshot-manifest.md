@@ -1,10 +1,10 @@
 # Screenshot manifest
 
-Updated: 2026-10-05.
+Updated: 2026-10-12.
 
 ## Current publication
 
-No product screenshot is embedded in the rewritten public guides. The July assets show obsolete labels and workflows and are not used as current evidence. Existing files under `public/product/` are retained as historical assets, not silently relabelled as Speiros captures.
+One static contextual-tour component example is embedded in `/start/onboarding`; see its provenance below. No historical product screenshot is embedded in the rewritten public guides. The July assets show obsolete labels and workflows and are not used as current evidence. Existing files under `public/product/` are retained as historical assets, not silently relabelled as Speiros captures.
 
 The Help Center keeps its abstract architectural home image to preserve its presentation. It uses the current Speiros mark from `wilu-web origin/main:public/brand/speiros/v1/logo/speiros-mark.svg` and a current text-based Open Graph image. Neither is product execution evidence.
 
@@ -24,3 +24,21 @@ The Help Center keeps its abstract architectural home image to preserve its pres
 | Beta systems/workspace invites | Settings | Authorized test systems and disposable invitation identities |
 
 Record source commit, route, state, viewport, exact labels, crop, publication placement, and privacy check before embedding an asset. Never fabricate a state or use customer data. Capture-only tasks must not contact real people or change live billing, workspace access, or provider permissions.
+
+## Contextual-tour illustrative crop — 12 October 2026
+
+- Asset: `public/product/speiros-contextual-tour-example.png`.
+- Source: actual contextual-tour component on application working branch
+  `feat/onboarding-contextual-tour`, parent `1501cb32b850cd27896c38d648d41b89f4db147f`.
+- Capture source: local browser fixture with synthetic pages; Roles, step 1 of 5.
+  Not a production or provider execution screenshot.
+- Source crop: `/private/tmp/speiros-onboarding-review/contextual-tour-card.png`,
+  supplied after root verified the local component interaction.
+- Published crop: 360 × 380 pixels; only the tour card, no historical application shell.
+- Visible labels: Discover Speiros, Roles, Product designer, Role brief, Candidates,
+  Role conversation, Pause, Next. Static example; no animation or recorded operation.
+- Placement: `/start/onboarding#discover-the-product-and-resume-the-tour`.
+- Caption: “Illustrative example of the product tour, captured with synthetic data”.
+- Privacy: synthetic role example; no real identity, contact details or recruiting data.
+- Release boundary: article instructions depend on the verified matching application
+  release; hosted authenticated application/production verification remains pending.

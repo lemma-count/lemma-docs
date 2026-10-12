@@ -17,6 +17,7 @@ Investigate the owning application's fresh `origin/main` and its local product c
 - `product-defects.md` — contradictions and boundaries the docs must preserve.
 - `DOCS_PATTERN_NOTES.md` — retained Help Center presentation and navigation choices.
 - `release-validation-2026-10-05.md` — implementation checks and release sequencing.
+- `onboarding-navigation-validation-2026-10-12.md` — current navigation/settings delta and evidence limits.
 
 ## Publication
 
