@@ -3,7 +3,12 @@
 ## Authorities and limits
 
 Documentation base: `lemma-docs origin/main b5fd2b8`.
-Application authority: `wilu-web origin/main 1501cb32b850cd27896c38d648d41b89f4db147f`.
+Application authority for the initial coherence delta:
+`wilu-web origin/main 1501cb32b850cd27896c38d648d41b89f4db147f`.
+Navigation follow-up verified on fresh `origin/main 53f3bbcbd` (PR #2464):
+`/home` now has the **Home** navigation label and appears first. The page title
+**Work** and its **Needs you** view retain their own labels. Only navigation
+references were corrected; the older local-fixture evidence below remains dated.
 
 This is a code-backed coherence audit. It does not establish that calendar OAuth,
 Slack authorization, invitations, billing or recruiting execution completed live.
@@ -14,7 +19,8 @@ only after the matching application release has been verified.
 ## Code-backed corrections
 
 - `src/components/gtm/gtm-nav.ts`, `gtm-sidebar-nav.tsx`: Roles, Process, Knowledge,
-  Needs you and Candidates; object/conversation panel and Getting started account action.
+  Home and Candidates; object/conversation panel and Getting started account action.
+  Home label/order were rechecked at `53f3bbcbd`; Needs you remains a Work view.
 - `src/components/gtm/sourcing/start-recruiting-button.tsx`: Find candidates,
   Choose a role, Search without a role and Create a role.
 - `src/components/gtm/roles/create-role-button.tsx`, `post-workspace.tsx`:
@@ -65,3 +71,11 @@ Hosted application verification remains a release prerequisite.
 Roles tour card captured in that fixture. It contains synthetic Product designer
 data, without application shell, real profiles, or provider execution claims. The
 public caption explicitly identifies it as an illustrative example.
+
+## Home navigation follow-up
+
+The public onboarding article opens Home to reach Work, and the tour’s final
+concept names Home. The public navigation table lists Home first. References
+to the Needs you view and decisions remain intact. The prior local fixture
+sequence used the then-current Needs you navigation label; it does not prove
+the final Home-labelled hosted application experience.
