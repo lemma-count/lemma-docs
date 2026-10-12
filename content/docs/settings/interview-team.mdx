@@ -1,0 +1,46 @@
+---
+title: Prepare your interview team
+description: Add interviewers, authorize availability and organizer access, and connect Slack coordination.
+---
+
+**Interview team** contains the people and calendar access used for interview coordination. Adding an interviewer does not grant access to your Speiros workspace. [Workspace invitations](/settings/workspace) are a separate action.
+
+You can source candidates and prepare a role before configuring interviews. Configure this team when you need Speiros to coordinate participants and invitations.
+
+## Add an interviewer
+
+1. Open [Settings → Interview team](https://app.speiros.com/settings/team) in the intended workspace.
+2. Choose **Add by email**, enter **Name** and **Professional email**, and choose **Save person**.
+3. Review the saved person and their verification state. Optional working hours constrain their availability; they do not replace calendar access.
+4. Under **Professional calendars**, choose **Google Workspace**, **Microsoft 365**, or **Let each person choose**, then use **Invite by email** or **Invite in Slack** when offered to ask the person to connect their calendar.
+5. Check the invitation’s delivery and calendar state. **Invitation sent · Waiting for calendar connection** does not mean availability is readable yet.
+
+If delivery is uncertain, check the existing invitation before sending a replacement. **Send new invitation** invalidates the previous link and asks for confirmation. Calendar authorization must be completed by the intended person.
+
+## Check availability access
+
+Use **Manage calendars** for the person. Choose a connected account and calendar, or use **Connect Google** / **Connect Outlook** when you are authorized to connect it. Inspect the provider’s readable availability and event permissions.
+
+Select **Include busy times in availability checks** when the calendar should contribute conflicts, then **Save calendar access**. Check **Availability readable** and **Blocks availability** on the saved entry. A missing calendar or inaccessible connection means availability is unknown; it must not be treated as free time.
+
+Removing a calendar binding stops its contribution for that person. Disconnecting the account removes access for all people using that account; inspect the confirmation before proceeding.
+
+## Choose an organizer calendar
+
+For the hiring sponsor’s calendar, enable **Allow Speiros to create and update interview events**, then **Use this calendar to organize interview invitations**, and save. These controls require corresponding provider permissions.
+
+An **Organizer calendar** sends interview invitations. Its owner does not automatically attend an interview. Choose the attendees separately in your process and coordination. Booking settings in [Calendars and coordination](/settings/calendar) remain distinct from these participant permissions.
+
+## Connect Slack coordination
+
+In the Slack section, choose **Connect Slack** and complete authorization for the intended workspace. Use **Check connection** and inspect **Connection verified** and **Speiros’s Slack access**. Speiros can only read conversations the Slack app has permission to access.
+
+You can import people from the connected Slack workspace and verify their identities before using **Invite in Slack**. An imported person or stored Slack ID does not itself prove calendar availability or verified identity.
+
+The team’s Slack app supports coordination and calendar invitations. The Slack tool in [Integrations](/settings/tools) provides conversation access under its own permissions; one connection should not be assumed to prove the other is ready.
+
+## Groups and next steps
+
+Use **New team name** and **Add team** to create interview groups. Configure the relevant participants in **Process**, then assign the process to a role. Changes to a shared template apply to future coordinations; check an existing candidate path separately.
+
+For a failed team refresh, calendar authorization, or Slack verification, use the page’s retry or reconnect control and inspect its state before continuing. [Contact Support](/help/support) with the visible error if it remains unresolved.

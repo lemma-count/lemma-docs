@@ -4,7 +4,7 @@ Task-oriented documentation for the current recruiting product. The Help Center 
 
 ## Structure
 
-52 canonical pages across six collections:
+53 canonical pages across six collections:
 
 - `/start` — understand Speiros and complete a first recruitment.
 - `/recruiting` — prepare company context and create or manage roles.
