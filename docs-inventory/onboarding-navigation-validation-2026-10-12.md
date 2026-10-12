@@ -12,9 +12,11 @@ references were corrected; the older local-fixture evidence below remains dated.
 
 This is a code-backed coherence audit. It does not establish that calendar OAuth,
 Slack authorization, invitations, billing or recruiting execution completed live.
-Historical October 5 evidence remains preserved. The new contextual-tour section describes the pending application delivery on
-`feat/onboarding-contextual-tour`, parent `1501cb32b`. Publish this documentation
-only after the matching application release has been verified.
+Historical October 5 evidence remains preserved. The contextual tour was released
+in application PR [#2465](https://github.com/lemma-count/wilu-web/pull/2465), merge
+`ecbb2c279b880849fc175a24f17d7083f19b6e19`. The production deployment is READY
+on `https://app.speiros.com`; this is deployment evidence, separate from the
+browser observations below.
 
 ## Code-backed corrections
 
@@ -46,7 +48,7 @@ No public article currently embeds `public/product/lemma-*.jpg`. Those retained 
 assets remain historical and must not be relabelled. Current text corrections do not
 require including production screenshots containing personal or recruiting data.
 Fresh synthetic captures are still needed for role, Knowledge review, Process/team
-and the eventual contextual tour; record route, source commit, viewport and state
+and contextual tour states beyond the illustrative crop; record route, source commit, viewport and state
 in `screenshot-manifest.md` before publication.
 
 ## Validation
@@ -55,8 +57,8 @@ in `screenshot-manifest.md` before publication.
 redirects, and 5 documentation API tests. `npm run build` passed and generated
 60 static pages. `git diff --check` passed.
 The public docs API tests and link checks verify content exposure and internal links,
-not successful external provider execution. Capture V2 live/preview evidence separately
-before publishing instructions for resuming across pages.
+not successful external provider execution. The production continuity checks below
+are separate from these documentation checks.
 
 ## Contextual-tour component evidence
 
@@ -65,7 +67,7 @@ pages: Roles → Candidates → Knowledge → Process → Needs you; Next/Back, 
 and reload continuity; Escape/Pause; header Resume tour with step count; finishing
 and replay; isolated user/workspace preferences and compact card layout. This is
 local component evidence, not a hosted authenticated application or production check.
-Hosted application verification remains a release prerequisite.
+Production verification for the deployed release is recorded separately below.
 
 `public/product/speiros-contextual-tour-example.png` is a static crop of the actual
 Roles tour card captured in that fixture. It contains synthetic Product designer
@@ -79,3 +81,17 @@ concept names Home. The public navigation table lists Home first. References
 to the Needs you view and decisions remain intact. The prior local fixture
 sequence used the then-current Needs you navigation label; it does not prove
 the final Home-labelled hosted application experience.
+
+## Production continuity verification — partial acceptance
+
+The coordinator verified the authenticated application at `app.speiros.com` on
+October 12 after production release `ecbb2c279b880849fc175a24f17d7083f19b6e19`.
+Roles → Candidates retained the compact card at step 2/5. Escape paused the visit;
+a reload preserved the header Resume control at 2/5. These observations establish
+the reported cross-page interruption and resumption fix on the real product.
+
+Remaining full-app acceptance at this record: Knowledge, Process and Home steps,
+Back, finish/replay, keyboard focus, and the whole-shell narrow-screen header.
+Local fixture checks remain distinct from those production observations. No
+calendar/Slack connection, role creation, candidate mutation, publishing or
+provider send was exercised by these tour checks.

@@ -40,5 +40,9 @@ Record source commit, route, state, viewport, exact labels, crop, publication pl
 - Placement: `/start/onboarding#discover-the-product-and-resume-the-tour`.
 - Caption: “Illustrative example of the product tour, captured with synthetic data”.
 - Privacy: synthetic role example; no real identity, contact details or recruiting data.
-- Release boundary: article instructions depend on the verified matching application
-  release; hosted authenticated application/production verification remains pending.
+- Release boundary: matching application PR #2465 is merged at
+  `ecbb2c279b880849fc175a24f17d7083f19b6e19` and its production deployment is READY.
+  Authenticated Roles → Candidates and Escape/reload resumption at 2/5 were verified
+  by the coordinator. Remaining full-app tour/mobile checks are tracked in
+  `onboarding-navigation-validation-2026-10-12.md`. This asset remains a synthetic
+  component example, not a production screenshot.
