@@ -43,6 +43,9 @@ Record source commit, route, state, viewport, exact labels, crop, publication pl
 - Release boundary: matching application PR #2465 is merged at
   `ecbb2c279b880849fc175a24f17d7083f19b6e19` and its production deployment is READY.
   Authenticated Roles → Candidates and Escape/reload resumption at 2/5 were verified
-  by the coordinator. Remaining full-app tour/mobile checks are tracked in
+  by the coordinator. All five real desktop routes, focus, finish/replay, free navigation and collapsed
+  sidebar continuation subsequently passed. Hosted mobile remains unverified
+  because the viewport command did not resize authenticated Chrome; only the
+  local responsive fixture passed. Exact scope is recorded in
   `onboarding-navigation-validation-2026-10-12.md`. This asset remains a synthetic
   component example, not a production screenshot.

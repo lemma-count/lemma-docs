@@ -82,7 +82,7 @@ to the Needs you view and decisions remain intact. The prior local fixture
 sequence used the then-current Needs you navigation label; it does not prove
 the final Home-labelled hosted application experience.
 
-## Production continuity verification — partial acceptance
+## Production desktop continuity acceptance
 
 The coordinator verified the authenticated application at `app.speiros.com` on
 October 12 after production release `ecbb2c279b880849fc175a24f17d7083f19b6e19`.
@@ -90,8 +90,17 @@ Roles → Candidates retained the compact card at step 2/5. Escape paused the vi
 a reload preserved the header Resume control at 2/5. These observations establish
 the reported cross-page interruption and resumption fix on the real product.
 
-Remaining full-app acceptance at this record: Knowledge, Process and Home steps,
-Back, finish/replay, keyboard focus, and the whole-shell narrow-screen header.
-Local fixture checks remain distinct from those production observations. No
-calendar/Slack connection, role creation, candidate mutation, publishing or
-provider send was exercised by these tour checks.
+The coordinator subsequently verified all five actual desktop routes:
+Roles → Candidates → Knowledge → Process → Home. Focus remained on the tour;
+Finish exposed Replay and did not change the real setup count (5/7). Replay
+returned to 1/5. Explore roles retained the card on Roles; navigating freely to
+Home during Candidates 2/5 and choosing Explore candidates returned to that step.
+The highlight remained visible with the sidebar collapsed. Escape/reload
+resumption was verified as above.
+
+Hosted mobile acceptance remains unverified: the authenticated Chrome viewport
+command did not resize the browser; screenshots remained 1470 × 742 instead of
+the requested 390-pixel width. The earlier 390 × 844 local responsive fixture
+passed, but it is not hosted whole-shell mobile evidence. No calendar/Slack
+connection, role creation, candidate mutation, publication or provider send was
+exercised by these tour checks.
